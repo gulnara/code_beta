@@ -35,13 +35,15 @@ end
 gem 'bootstrap-sass', '~> 3.0.3.0'
 
 group :development, :test do
-     gem 'pg'
+     gem 'sqlite3'
 end
 
 group :production do
      gem 'pg'
      gem 'rails_12factor'
 end
+
+gem 'devise'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
