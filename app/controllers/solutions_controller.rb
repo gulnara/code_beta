@@ -26,39 +26,30 @@ class SolutionsController < ApplicationController
   def create
     @solution = Solution.new(solution_params)
 
-    respond_to do |format|
-      if @solution.save
-        format.html { redirect_to @solution, notice: 'Solution was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @solution }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @solution.errors, status: :unprocessable_entity }
-      end
+    if @solution.save
+      redirect_to @solution, notice: 'Solution was successfully created.' 
+    else
+      render action: 'new' 
     end
   end
 
   # PATCH/PUT /solutions/1
   # PATCH/PUT /solutions/1.json
   def update
-    respond_to do |format|
-      if @solution.update(solution_params)
-        format.html { redirect_to @solution, notice: 'Solution was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @solution.errors, status: :unprocessable_entity }
-      end
+
+    if @solution.update(solution_params)
+      redirect_to @solution, notice: 'Solution was successfully updated.' 
+    else
+      render action: 'edit' 
     end
+
   end
 
   # DELETE /solutions/1
   # DELETE /solutions/1.json
   def destroy
     @solution.destroy
-    respond_to do |format|
-      format.html { redirect_to solutions_url }
-      format.json { head :no_content }
-    end
+    redirect_to solutions_url 
   end
 
   private

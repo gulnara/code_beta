@@ -26,39 +26,32 @@ class ProblemsController < ApplicationController
   def create
     @problem = Problem.new(problem_params)
 
-    respond_to do |format|
-      if @problem.save
-        format.html { redirect_to @problem, notice: 'Problem was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @problem }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @problem.errors, status: :unprocessable_entity }
-      end
+    if @problem.save
+      redirect_to @problem, notice: 'Problem was successfully created.' 
+    else
+      render action: 'new' 
     end
+ 
   end
 
   # PATCH/PUT /problems/1
   # PATCH/PUT /problems/1.json
   def update
-    respond_to do |format|
-      if @problem.update(problem_params)
-        format.html { redirect_to @problem, notice: 'Problem was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @problem.errors, status: :unprocessable_entity }
-      end
+
+    if @problem.update(problem_params)
+      redirect_to @problem, notice: 'Problem was successfully updated.' 
+    else
+      render action: 'edit' 
     end
+
   end
 
   # DELETE /problems/1
   # DELETE /problems/1.json
   def destroy
     @problem.destroy
-    respond_to do |format|
-      format.html { redirect_to problems_url }
-      format.json { head :no_content }
-    end
+    redirect_to problems_url 
+
   end
 
   private
