@@ -1,7 +1,16 @@
 CodeBeta::Application.routes.draw do
+  get "users/show"
+
   devise_for :users
-  root "pages#home"
+
+  # get 'users/:id' => 'users#show', as: :user
+  match 'users/:id' => 'users#show', via: [:get], :as => :user
+
+
+  
   get "about" => "pages#about" #creates about_path
+
+  root "pages#home"
 
   
   # The priority is based upon order of creation: first created -> highest priority.
