@@ -1,4 +1,6 @@
 CodeBeta::Application.routes.draw do
+  resources :problems
+
   get "users/show"
 
   devise_for :users
