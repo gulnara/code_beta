@@ -1,4 +1,6 @@
 CodeBeta::Application.routes.draw do
+  resources :solutions
+
   resources :problems
 
   get "users/show"
