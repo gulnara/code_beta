@@ -1,5 +1,7 @@
 class SolutionsController < ApplicationController
   before_action :set_solution, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /solutions
   # GET /solutions.json
@@ -14,7 +16,7 @@ class SolutionsController < ApplicationController
 
   # GET /solutions/new
   def new
-    @solution = Solution.new
+    @solution = current_user.solutions.build
   end
 
   # GET /solutions/1/edit
@@ -24,7 +26,7 @@ class SolutionsController < ApplicationController
   # POST /solutions
   # POST /solutions.json
   def create
-    @solution = Solution.new(solution_params)
+    @solution = current_user.solutions.build(solution_params)
 
     if @solution.save
       redirect_to @solution, notice: 'Solution was successfully created.' 
@@ -56,6 +58,11 @@ class SolutionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_solution
       @solution = Solution.find(params[:id])
+    end
+
+    def correct_user
+      @solution = current_user.solutions.find_by(id: params[:id])
+      redirect_to solutions_path, notice: "Not authorized to edit this solution" if @solution.nil?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

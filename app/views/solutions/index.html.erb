@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Answer</th>
+      <th>User</th>
       <th></th>
       <th></th>
       <th></th>
@@ -14,14 +15,18 @@
     <% @solutions.each do |solution| %>
       <tr>
         <td><%= solution.answer %></td>
+        <td><%= solution.user.name if solution.user %></td>
         <td><%= link_to 'Show', solution %></td>
-        <td><%= link_to 'Edit', edit_solution_path(solution) %></td>
-        <td><%= link_to 'Destroy', solution, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if solution.user == current_user %>
+          <td><%= link_to 'Edit', edit_solution_path(solution) %></td>
+          <td><%= link_to 'Destroy', solution, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Solution', new_solution_path %>
+<% if user_signed_in? %>
+  <%= link_to 'New Solution', new_solution_path %>
+<% end %>

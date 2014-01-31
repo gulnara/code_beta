@@ -5,5 +5,7 @@
   <%= @solution.answer %>
 </p>
 
-<%= link_to 'Edit', edit_solution_path(@solution) %> |
+<% if @solution.user == current_user %>
+	<%= link_to 'Edit', edit_solution_path(@solution) %> 
+<% end %>
 <%= link_to 'Back', solutions_path %>
