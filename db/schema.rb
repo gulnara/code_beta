@@ -11,12 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140201015605) do
+ActiveRecord::Schema.define(version: 20140201020905) do
 
   create_table "problems", force: true do |t|
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "title"
+    t.string   "source"
+    t.string   "level"
   end
 
   create_table "solutions", force: true do |t|
@@ -25,6 +28,7 @@ ActiveRecord::Schema.define(version: 20140201015605) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "problem_id"
+    t.string   "language"
   end
 
   add_index "solutions", ["user_id"], name: "index_solutions_on_user_id"
@@ -47,6 +51,10 @@ ActiveRecord::Schema.define(version: 20140201015605) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "twitter"
+    t.string   "github"
+    t.string   "url"
+    t.string   "language"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
