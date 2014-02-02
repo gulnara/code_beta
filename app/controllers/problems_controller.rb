@@ -17,7 +17,11 @@ class ProblemsController < ApplicationController
 
   # GET /problems/new
   def new
-    @problem = are_you_admin.problems.build
+    if current_user.try(:admin?)
+      @problem = Problem.new
+    else
+      redirect_to problems_path, notice: "Not authorized to create a problem"
+    end
   end
 
   # GET /problems/1/edit
@@ -27,12 +31,15 @@ class ProblemsController < ApplicationController
   # POST /problems
   # POST /problems.json
   def create
-    @problem = are_you_admin.problems.build(problem_params)
-
-    if @problem.save
-      redirect_to @problem, notice: 'Problem was successfully created.' 
+    if current_user.try(:admin?)
+      @problem = Problem.new(problem_params)
+      if @problem.save
+        redirect_to @problem, notice: 'Problem was successfully created.' 
+      else
+        render action: 'new' 
+      end
     else
-      render action: 'new' 
+      redirect_to problems_path, notice: "Not authorized to create a problem"
     end
  
   end
