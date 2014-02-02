@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140201020905) do
+ActiveRecord::Schema.define(version: 20140202155753) do
 
   create_table "problems", force: true do |t|
     t.string   "description"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20140201020905) do
     t.string   "github"
     t.string   "url"
     t.string   "language"
+    t.string   "role"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
