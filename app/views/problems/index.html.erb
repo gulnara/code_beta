@@ -19,13 +19,16 @@
         <td><%= problem.description %></td>
         <td><%= problem.source %></td>
         <td><%= link_to 'Show', problem %></td>
-        <td><%= link_to 'Edit', edit_problem_path(problem) %></td>
-        <td><%= link_to 'Destroy', problem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user.try(:admin?) %>
+          <td><%= link_to 'Edit', edit_problem_path(problem) %></td>
+          <td><%= link_to 'Destroy', problem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Problem', new_problem_path %>
+<% if current_user.try(:admin?) %>
+  <%= link_to 'New Problem', new_problem_path %>
+<% end %>

@@ -1,5 +1,8 @@
 class ProblemsController < ApplicationController
   before_action :set_problem, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :are_you_admin, only: [:edit, :update, :destroy]
+
 
   # GET /problems
   # GET /problems.json
@@ -14,7 +17,7 @@ class ProblemsController < ApplicationController
 
   # GET /problems/new
   def new
-    @problem = Problem.new
+    @problem = are_you_admin.problems.build
   end
 
   # GET /problems/1/edit
@@ -24,7 +27,7 @@ class ProblemsController < ApplicationController
   # POST /problems
   # POST /problems.json
   def create
-    @problem = Problem.new(problem_params)
+    @problem = are_you_admin.problems.build(problem_params)
 
     if @problem.save
       redirect_to @problem, notice: 'Problem was successfully created.' 
@@ -58,6 +61,14 @@ class ProblemsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_problem
       @problem = Problem.find(params[:id])
+    end
+
+    def are_you_admin
+      if current_user.try(:admin?)
+        @problem = Problem.find(params[:id])
+      else
+        redirect_to problems_path, notice: "Not authorized to edit this problem"
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
