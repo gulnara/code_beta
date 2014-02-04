@@ -1,9 +1,52 @@
 <p id="notice"><%= notice %></p>
+<p>
+  <strong>Title:</strong>
+  <%= @problem.title %>
+</p>
 
 <p>
   <strong>Description:</strong>
   <%= @problem.description %>
 </p>
 
-<%= link_to 'Edit', edit_problem_path(@problem) %> |
+<p>
+  <strong>Source</strong>
+  <%= @problem.source %>
+</p>
+
+<p>
+  <strong>Solutions</strong>
+  <table>
+	  <thead>
+	    <tr>
+	      <th>Answer</th>
+	      <th>User</th>
+	      <th></th>
+	      <th></th>
+	      <th></th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <% @problem.solutions.each do |solution| %>
+	      <tr>
+	      	<td><%= solution.id %></td>
+	        <td><%= solution.answer %></td>
+	        <td><%= solution.user.name if solution.user %></td>
+	        <td><%= link_to 'Show', problem_solution_path(@problem, solution) %></td>
+	        <% if solution.user == current_user %>
+	          <td><%= link_to 'Edit', 'edit_problem_solution_path(solution)' %></td>
+	          <td><%= link_to 'Destroy', "problem_solution_path, method: :delete, data: { confirm: 'Are you sure?' }" %></td>
+	        <% end %>
+	      </tr>
+	    <% end %>
+	  </tbody>
+	 </table>
+</p>
+<% if user_signed_in? %>
+<%= link_to 'Submit a Solution', new_problem_solution_path(@problem) %> |
+<% end %>
+
+<% if current_user.try(:admin?) %>
+	<%= link_to 'Edit', edit_problem_path(@problem) %> |
+<% end %>
 <%= link_to 'Back', problems_path %>

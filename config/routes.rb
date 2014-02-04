@@ -1,7 +1,10 @@
 CodeBeta::Application.routes.draw do
-  resources :solutions
+  
+  resources :problems do
 
-  resources :problems
+    resources :solutions
+
+  end
 
   get "users/show"
 
