@@ -4,58 +4,61 @@ class SolutionsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :current_problem
 
-  # GET /solutions
-  # GET /solutions.json
+
   def index
     @solutions = Solution.all
   end
 
-  # GET /solutions/1
-  # GET /solutions/1.json
+
   def show
+    @solution = Solution.find(params[:id])
     id = Solution.find(params[:problem_id])
     @problem =  Problem.find_by(id: id )
   end
 
-  # GET /solutions/new
+
   def new
-    @solution = current_user.solutions.build
+    @solution = current_user.solutions.new
+    id = Solution.find(params[:problem_id])
+    @problem =  Problem.find_by(id: id )
   end
 
-  # GET /solutions/1/edit
+
   def edit
-
+    @solution = Solution.find(params[:id])
+    id = Solution.find(params[:problem_id])
+    @problem =  Problem.find_by(id: id )
   end
 
-  # POST /solutions
-  # POST /solutions.json
+
   def create
+    problem = current_problem
     @solution = current_user.solutions.build(solution_params)
+    @solution.problem_id = problem.id
 
     if @solution.save
-      redirect_to @solution, notice: 'Solution was successfully created.' 
+      redirect_to problem_solution_path(@problem, @solution), notice: 'Solution was successfully created.' 
     else
       render action: 'new' 
     end
   end
 
-  # PATCH/PUT /solutions/1
-  # PATCH/PUT /solutions/1.json
+
   def update
+    problem_id = Solution.find(params[:problem_id])
 
     if @solution.update(solution_params)
-      redirect_to @solution, notice: 'Solution was successfully updated.' 
+      redirect_to problem_solution_path, notice: 'Solution was successfully updated.' 
     else
       render action: 'edit' 
     end
 
   end
 
-  # DELETE /solutions/1
-  # DELETE /solutions/1.json
+
   def destroy
     @solution.destroy
-    redirect_to solutions_url 
+    redirect_to problem_solutions_path(@problem) 
   end
 
   private
@@ -69,12 +72,14 @@ class SolutionsController < ApplicationController
       redirect_to solutions_path, notice: "Not authorized to edit this solution" if @solution.nil?
     end
 
-    def current_problem 
-      @problem = Problem.find(params[:id])
+    def current_problem
+      id = Solution.find(params[:problem_id])
+      @problem =  Problem.find_by(id: id ) 
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def solution_params
-      params.require(:solution).permit(:answer, :problem_id )
+      params.require(:solution).permit(:answer, :problem_id, :id )
     end
 end

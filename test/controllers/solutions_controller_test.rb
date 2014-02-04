@@ -21,7 +21,7 @@ class SolutionsControllerTest < ActionController::TestCase
       post :create, solution: { answer: @solution.answer }
     end
 
-    assert_redirected_to solution_path(assigns(:solution))
+    assert_redirected_to problem_solution_path(assigns(:solution))
   end
 
   test "should show solution" do
@@ -36,7 +36,7 @@ class SolutionsControllerTest < ActionController::TestCase
 
   test "should update solution" do
     patch :update, id: @solution, solution: { answer: @solution.answer }
-    assert_redirected_to solution_path(assigns(:solution))
+    assert_redirected_to problem_solution_path(assigns(:solution))
   end
 
   test "should destroy solution" do
@@ -44,6 +44,6 @@ class SolutionsControllerTest < ActionController::TestCase
       delete :destroy, id: @solution
     end
 
-    assert_redirected_to solutions_path
+    assert_redirected_to problem_solutions_path
   end
 end
