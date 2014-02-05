@@ -1,9 +1,11 @@
 CodeBeta::Application.routes.draw do
   
   resources :problems do
-
     resources :solutions
+  end
 
+  resources :users do
+    get 'solutions', :on => :member
   end
 
   get "users/show"
@@ -11,7 +13,7 @@ CodeBeta::Application.routes.draw do
   devise_for :users
 
   # get 'users/:id' => 'users#show', as: :user
-  match 'users/:id' => 'users#show', via: [:get], :as => :user
+  # match 'users/:id' => 'users#show', via: [:get], :as => :user
 
 
   

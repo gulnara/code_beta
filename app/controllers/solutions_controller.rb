@@ -15,7 +15,6 @@ class SolutionsController < ApplicationController
   def show
     @solution = Solution.find(params[:id])
     # problem_id = Solution.find(params[:problem_id])
-    # problem_id = Solution.find(params[:problem_id])
     @problem =  Problem.find_by(id: @solution.problem_id )
   end
 

@@ -4,8 +4,9 @@
   <thead>
     <tr>
       <th>Answer</th>
+      <th>problem_id</th>
       <th>User</th>
-      <th></th>
+
       <th></th>
       <th></th>
     </tr>
@@ -15,6 +16,7 @@
     <% @solutions.each do |solution| %>
       <tr>
         <td><%= solution.answer %></td>
+        <td><%= solution.problem_id %></td>
         <td><%= solution.user.name if solution.user %></td>
         <td><%= link_to 'Show', problem_solution_path(@problem, solution) %></td>
         <% if solution.user == current_user %>

@@ -11,7 +11,7 @@
 
 <p>
   <strong>Source</strong>
-  <%= @problem.source %>
+  <%= link_to @problem.source, @problem.source %>
 </p>
 
 <p>
@@ -31,7 +31,7 @@
 	      <tr>
 	      	<td><%= solution.id %></td>
 	        <td><%= solution.answer %></td>
-	        <td><%= solution.user.name if solution.user %></td>
+	        <td><%= link_to solution.user.name,  user_path(solution.user.id) %></td>
 	        <td><%= link_to 'Show', problem_solution_path(@problem, solution) %></td>
 	        <% if solution.user == current_user %>
 	          <td><%= link_to 'Edit', edit_problem_solution_path(@problem, solution) %></td>
