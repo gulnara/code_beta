@@ -8,23 +8,19 @@
 <table>
 	  <thead>
 	    <tr>
-	      <th>Problem Id</th>
-	      <th>Solution Id</th>
-	      <th>Answer</th>
+	      <th>Solution To</th>
+	      <th></th>
 	      <th></th>
 	    </tr>
 	  </thead>
 		<tbody>
 		<%@user.solutions.each do |solution|%>
 			<tr>
-		     <td><%= solution.problem_id %>
-				<td><%= solution.id %></td>
-				<td><%=  solution.answer %></p>
+				<% p_id = solution.problem_id %>
+				<%problem = @user.problems.find{|a| a.id = p_id}%>
+				<td><%=  problem.title %></p>
+
 				<td><%= link_to 'Show', problem_solution_path(:problem_id => solution.problem_id, :id => solution.id) %></td>
-				<% if solution.user == current_user %>
-          <td><%= link_to 'Edit', edit_problem_solution_path(:problem_id => solution.problem_id, :id => solution.id) %></td>
-          <td><%= link_to 'Destroy', problem_solution_path(:problem_id => solution.problem_id, :id => solution.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
 			</tr>
 		<%end%>
 		</tbody>
