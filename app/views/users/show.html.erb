@@ -9,6 +9,7 @@
 	  <thead>
 	    <tr>
 	      <th>Solution To</th>
+	      <th>In</th>
 	      <th></th>
 	      <th></th>
 	    </tr>
@@ -19,6 +20,7 @@
 				<% p_id = solution.problem_id %>
 				<%problem = @user.problems.find{|a| a.id = p_id}%>
 				<td><%=  problem.title %></p>
+				<td><%=  solution.language %></p>
 
 				<td><%= link_to 'Show', problem_solution_path(:problem_id => solution.problem_id, :id => solution.id) %></td>
 			</tr>
