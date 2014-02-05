@@ -3,19 +3,22 @@ CodeBeta::Application.routes.draw do
   resources :problems do
     resources :solutions
   end
-
+  devise_for :users
+  
   resources :users do
     get 'solutions', :on => :member
+    match 'users/:id' => 'users#show', via: [:get], :as => :user
   end
 
   get "users/show"
+  # get 'users/:id'
 
-  devise_for :users
+
 
   # get 'users/:id' => 'users#show', as: :user
   # match 'users/:id' => 'users#show', via: [:get], :as => :user
 
-
+  # get  '/users/edit(.:format)' => 'devise/registrations#edit', via: [:get], :as => 'settings'
   
   get "about" => "pages#about" #creates about_path
 
