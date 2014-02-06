@@ -1,10 +1,10 @@
 <h1>Listing problems</h1>
+  <%= link_to 'New Problem', new_problem_path %>
 
 <table>
   <thead>
     <tr>
       <th>Title</th>
-      <th>Description</th>
       <th>Source</th>
       <th></th>
       <th></th>
@@ -16,10 +16,9 @@
     <% @problems.each do |problem| %>
       <tr>
         <td><%= problem.title %></td>
-        <td><%= problem.description %></td>
         <td><%= problem.source %></td>
         <td><%= link_to 'Show', problem %></td>
-        <% if current_user.try(:admin?) %>
+        <% if current_user.try(:admin?) or problem.user_id == current_user.id  %>
           <td><%= link_to 'Edit', edit_problem_path(problem) %></td>
           <td><%= link_to 'Destroy', problem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
@@ -29,6 +28,5 @@
 </table>
 
 <br>
-<% if current_user.try(:admin?) %>
-  <%= link_to 'New Problem', new_problem_path %>
-<% end %>
+
+
