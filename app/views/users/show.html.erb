@@ -18,7 +18,7 @@
 		<%@user.solutions.each do |solution|%>
 			<tr>
 				<% p_id = solution.problem_id %>
-				<%problem = @user.problems.find{|a| a.id = p_id}%>
+				<%problem = @user.problems.find{|a| a.id == p_id}%>
 				<td><%=  problem.title %></p>
 				<td><%=  solution.language %></p>
 
