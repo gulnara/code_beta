@@ -25,6 +25,7 @@
                      <h1><%= @user.name %></h1>
                     <div class="profile"><%= image_tag @user.avatar.url(:thumb) %></div>
                     <h1><span></span></h1>
+                    <h2><span>Problems</span></h2>
                     <p><%= @user.language %></p>
                     <p><%= link_to "@#{@user.twitter}", "https://twitter.com/#{@user.twitter}" %></p>
                     <p><%= link_to "#{@user.github}", @user.github %></p>
@@ -98,16 +99,36 @@
         </div><!-- /page-right -->
         <div class="page page-left page-fill">
             <div class="page-inner">
-                <li><%= link_to "Home", root_path %></li>
-                <li><%= link_to "Problems", problems_path %></li>
-                <li><%= link_to "About", about_path %></li>
-                <% if user_signed_in? %>
-                <li><%= link_to "Profile", current_user %></li>
-                <li><%= link_to "Account Settings", edit_user_registration_path %></li>
-                <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
-        <% else %>
-          <li><%= link_to "Sign in", new_user_session_path %></li>
+                <h2><span>Problems</span></h2>
+                  <%= link_to 'New Problem', new_problem_path %>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Title</th>
+                          <th></th>
+                          <th></th>
+                          <th></th>
+                        </tr>
+                      </thead>
+
+                        <tbody>
+                        <%@problem.each do |problem|%>
+                        <%if problem.user_id == @user.id %>
+                     
+                        <tr>
+
+                            <td><%=  problem.title %></p>
+
+                       <td><%= link_to 'Show', problem %></td>
+        <% if current_user.try(:admin?) or problem.user_id == current_user.id  %>
+          <td><%= link_to 'Edit', edit_problem_path(problem) %></td>
+          <td><%= link_to 'Destroy', problem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
+        <% end %>
+      </tr>
+                        <%end%>
+                        </tbody>
+                    </table>
             </div><!-- /page-inner -->
         </div><!-- /page-left -->
         <a href="#" class="back back-right" title="back to intro">→</a>
