@@ -1,29 +1,141 @@
-<p><%= @user.name %></p>
-<p><%= image_tag @user.avatar.url(:thumb) %></p>
-<p><%= @user.language %></p>
-<p><%= link_to "@#{@user.twitter}", "https://twitter.com/#{@user.twitter}" %></p>
-<p><%= link_to "#{@user.github}", @user.github %></p>
- <% url = @user.url %>
-<p><%= link_to "#{@user.url}" , url %></p>
-<table>
-	  <thead>
-	    <tr>
-	      <th>Solution To</th>
-	      <th>In</th>
-	      <th></th>
-	      <th></th>
-	    </tr>
-	  </thead>
-		<tbody>
-		<%@user.solutions.each do |solution|%>
-			<tr>
-				<% p_id = solution.problem_id %>
-				<%problem = @user.problems.find{|a| a.id == p_id}%>
-				<td><%=  problem.title %></p>
-				<td><%=  solution.language %></p>
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <link rel="shortcut icon" href="../favicon.ico">
+        <%= stylesheet_link_tag    "component", media: "all", "data-turbolinks-track" => true %>
+        <%= stylesheet_link_tag    "demo", media: "all", "data-turbolinks-track" => true %>
+        <%= javascript_include_tag "modernizr.custom", "data-turbolinks-track" => true %>
+        <%= csrf_meta_tags %>
+    </head>
+    <body>
+        <div class="container">
+                
+    <div id="splitlayout" class="splitlayout">
+        <div class="intro">
+            <div class="side side-left">
+            <header class="codropsheader clearfix">
 
-				<td><%= link_to 'Show', problem_solution_path(:problem_id => solution.problem_id, :id => solution.id) %></td>
-			</tr>
-		<%end%>
-		</tbody>
-	</table>	
+                    <span>codebeta</span>
+            </header>
+
+                <div class="intro-content">
+                     <h1><%= @user.name %></h1>
+                    <div class="profile"><%= image_tag @user.avatar.url(:thumb) %></div>
+                    <h1><span></span></h1>
+                    <h2><span>Problems</span></h2>
+                    <p><%= @user.language %></p>
+                    <p><%= link_to "@#{@user.twitter}", "https://twitter.com/#{@user.twitter}" %></p>
+                    <p><%= link_to "#{@user.github}", @user.github %></p>
+                     <% url = @user.url %>
+                    <p><%= link_to "#{@user.url}" , url %></p>
+                </div>
+                <div class="overlay"></div>
+            </div>
+            <div class="side side-right">
+                <header class="codropsheader clearfix">
+
+
+                    
+                    <div class="demos">
+        
+                        <%= link_to "Home", root_path %>
+                    <%= link_to "Problems", problems_path %>
+                    <%= link_to "About", about_path %>
+                    <% if user_signed_in? %>
+                      <%= link_to "Profile", current_user %>
+                      <%= link_to "Account Settings", edit_user_registration_path %>
+                      <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+                    <% else %>
+                      <%= link_to "Sign in", new_user_session_path %>
+                    <% end %>
+
+                    </div>
+
+                </header>
+                <div class="intro-content">
+
+                    <h2><span>Solutions</span></h2>
+
+                    
+                </div>
+                <div class="overlay"></div>
+            </div>
+        </div><!-- /intro -->
+        <div class="page page-right page-large">
+            <div class="page-inner">
+                <section>
+                    <h2><span>Solutions</span></h2>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Solution To</th>
+                          <th>In</th>
+                          <th></th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                        <tbody>
+                        <%@user.solutions.each do |solution|%>
+                        <tr>
+                            <% p_id = solution.problem_id %>
+                            <%problem = @user.problems.find{|a| a.id == p_id}%>
+                            <td><%=  problem.title %></p>
+                            <td><%=  solution.language %></p>
+
+                            <td><%= link_to 'Show', problem_solution_path(:problem_id => solution.problem_id, :id => solution.id) %></td>
+                        </tr>
+                        <%end%>
+                        </tbody>
+                    </table>
+                </section>
+                <section>
+                    <!-- content -->
+                </section>
+                <!-- ... -->
+            </div><!-- /page-inner -->
+        </div><!-- /page-right -->
+        <div class="page page-left page-fill">
+            <div class="page-inner">
+                <h2><span>Problems</span></h2>
+                  <%= link_to 'New Problem', new_problem_path %>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Title</th>
+                          <th></th>
+                          <th></th>
+                          <th></th>
+                        </tr>
+                      </thead>
+
+                        <tbody>
+                        <%@problem.each do |problem|%>
+                        <%if problem.user_id == @user.id %>
+                     
+                        <tr>
+
+                            <td><%=  problem.title %></p>
+
+                       <td><%= link_to 'Show', problem %></td>
+        <% if current_user.try(:admin?) or problem.user_id == current_user.id  %>
+          <td><%= link_to 'Edit', edit_problem_path(problem) %></td>
+          <td><%= link_to 'Destroy', problem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+        <% end %>
+      </tr>
+                        <%end%>
+                        </tbody>
+                    </table>
+            </div><!-- /page-inner -->
+        </div><!-- /page-left -->
+        <a href="#" class="back back-right" title="back to intro">→</a>
+        <a href="#" class="back back-left" title="back to intro">←</a>
+    </div><!-- /splitlayout -->
+</div><!-- /container -->
+        <%= javascript_include_tag "classie", "data-turbolinks-track" => true %>
+        <%= javascript_include_tag "cbpSplitLayout", "data-turbolinks-track" => true %>
+    </body>
+</html>
