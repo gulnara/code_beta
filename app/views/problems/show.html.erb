@@ -34,7 +34,7 @@
 	       	<td><%=  solution.language %></p>
 	        <td><%= link_to solution.user.name,  user_path(solution.user.id) %></td>
 	        <td><%= link_to 'Show', problem_solution_path(@problem, solution) %></td>
-	        <% if solution.user == current_user %>
+	        <% if current_user.try(:admin?) or solution.user == current_user %>
 	          <td><%= link_to 'Edit', edit_problem_solution_path(@problem, solution) %></td>
 	          <td><%= link_to 'Destroy', problem_solution_path(@problem, solution), method: :delete, data: { confirm: 'Are you sure?' } %></td>
 	        <% end %>
