@@ -16,9 +16,15 @@
     <div id="splitlayout" class="splitlayout">
         <div class="intro">
             <div class="side side-left">
+            <header class="codropsheader clearfix">
+
+                    <span>codebeta</span>
+            </header>
+
                 <div class="intro-content">
+                     <h1><%= @user.name %></h1>
                     <div class="profile"><%= image_tag @user.avatar.url(:thumb) %></div>
-                    <h1><span><%= @user.name %></span></h1>
+                    <h1><span></span></h1>
                     <p><%= @user.language %></p>
                     <p><%= link_to "@#{@user.twitter}", "https://twitter.com/#{@user.twitter}" %></p>
                     <p><%= link_to "#{@user.github}", @user.github %></p>
@@ -28,11 +34,31 @@
                 <div class="overlay"></div>
             </div>
             <div class="side side-right">
+                <header class="codropsheader clearfix">
+
+
+                    
+                    <div class="demos">
+        
+                        <%= link_to "Home", root_path %>
+                    <%= link_to "Problems", problems_path %>
+                    <%= link_to "About", about_path %>
+                    <% if user_signed_in? %>
+                      <%= link_to "Profile", current_user %>
+                      <%= link_to "Account Settings", edit_user_registration_path %>
+                      <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+                    <% else %>
+                      <%= link_to "Sign in", new_user_session_path %>
+                    <% end %>
+
+                    </div>
+
+                </header>
                 <div class="intro-content">
 
-                    <h2><span>Problems</span></h2>
-
                     <h2><span>Solutions</span></h2>
+
+                    
                 </div>
                 <div class="overlay"></div>
             </div>
@@ -40,7 +66,29 @@
         <div class="page page-right page-large">
             <div class="page-inner">
                 <section>
-                    <!-- content -->
+                    <h2><span>Solutions</span></h2>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Solution To</th>
+                          <th>In</th>
+                          <th></th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                        <tbody>
+                        <%@user.solutions.each do |solution|%>
+                        <tr>
+                            <% p_id = solution.problem_id %>
+                            <%problem = @user.problems.find{|a| a.id == p_id}%>
+                            <td><%=  problem.title %></p>
+                            <td><%=  solution.language %></p>
+
+                            <td><%= link_to 'Show', problem_solution_path(:problem_id => solution.problem_id, :id => solution.id) %></td>
+                        </tr>
+                        <%end%>
+                        </tbody>
+                    </table>
                 </section>
                 <section>
                     <!-- content -->

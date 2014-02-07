@@ -231,6 +231,11 @@ body {
 	font-size: 1.2em;
 }
 
+.intro-content table {
+	font-weight: 300;
+	font-size: 2.2em;
+}
+
 /* All transitions */
 .side,
 .page {
