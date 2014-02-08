@@ -12,4 +12,9 @@ class UsersController < ApplicationController
   def solutions
   	@solutions = Solution.all
   end
+
+
+  def send_problem
+    UserMailer.email_problems(@user).deliver
+  end
 end
