@@ -1,212 +1,142 @@
-/* General Blueprint Style */
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
 @font-face {
-	font-family: 'bpicons';
-	src:url('../fonts/bpicons/bpicons.eot');
-	src:url('../fonts/bpicons/bpicons.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/bpicons/bpicons.woff') format('woff'),
-		url('../fonts/bpicons/bpicons.ttf') format('truetype'),
-		url('../fonts/bpicons/bpicons.svg#bpicons') format('svg');
 	font-weight: normal;
 	font-style: normal;
-} /* Made with http://icomoon.io/ */
-
-*, *:after, *:before { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
-body, html { font-size: 100%; padding: 0; margin: 0;}
-
-/* Clearfix hack by Nicolas Gallagher: http://nicolasgallagher.com/micro-clearfix-hack/ */
-.clearfix:before, .clearfix:after { content: " "; display: table; }
-.clearfix:after { clear: both; }
+	font-family: 'codropsicons';
+	src:url('../fonts/codropsicons/codropsicons.eot');
+	src:url('../fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/codropsicons/codropsicons.woff') format('woff'),
+		url('../fonts/codropsicons/codropsicons.ttf') format('truetype'),
+		url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
+}
 
 body {
-    font-family: 'Lato', Calibri, Arial, sans-serif;
-    color: #fff;
-    background: #333;
+	color: #fff;
+	font-family: 'Lato', Arial, sans-serif;
 }
 
-a {
-	color: #ccc;
-	text-decoration: none;
+a,
+a:focus {
+	outline: none;
 }
 
-a:hover {
-	color: #000;
-}
-
-.codropsheader {
-	width: 100%;
+.codrops-header {
+	position: relative;
 	margin: 0 auto;
-	text-align: left;
-	padding: 1.4em;
+	max-width: 60%;
+	text-align: center;
+}
+
+.codrops-header a {
+	outline: none;
+	color: #fff;
+	text-decoration: none;
 	opacity: 0.7;
-	visibility: visible;
-	-webkit-transition: opacity 0.3s;
-	transition: opacity 0.3s;
 }
 
-.codropsheader h1 {
-	font-size: 2.125em;
-	line-height: 1.3;
-	margin: 0 0 0.6em 0;
-	float: left;
-	font-weight: 400;
+.codrops-header a:hover,
+.codrops-header a:focus {
+	opacity: 1;
 }
 
-.codropsheader > span {
-	display: block;
-	position: relative;
-	z-index: 9999;
-	font-weight: 700;
-	text-transform: uppercase;
-	letter-spacing: 0.5em;
-	padding: 0 0 0.6em 0.1em;
-}
-
-.codropsheader > span span:after {
-	width: 30px;
-	height: 30px;
-	left: -12px;
-	font-size: 50%;
-	top: -8px;
-	font-size: 75%;
-	position: relative;
-}
-
-.codropsheader > span span:hover:before {
-	content: attr(data-content);
-	text-transform: none;
-	text-indent: 0;
-	letter-spacing: 0;
+.codrops-header h1 {
+	margin: 0;
 	font-weight: 300;
-	font-size: 110%;
-	padding: 0.8em 1em;
-	line-height: 1.2;
-	text-align: left;
-	left: auto;
-	margin-left: 4px;
-	position: absolute;
-	color: #47a3da;
-	background: #fff;
+	font-size: 2.625em;
+	line-height: 1.3;
 }
 
-.codropsheader nav {
-	float: left;
-	text-align: center;
-	margin-left: 1.5em;
+.codrops-header h1 span {
 	display: block;
+	padding: 0.4em 1em 1em;
+	font-size: 60%;
 }
 
-.codropsheader nav a {
+.codrops-links {
+	margin: 0;
+}
+
+.codrops-links a {
 	display: inline-block;
-	position: relative;
-	text-align: left;
-	width: 2.5em;
-	height: 2.5em;
-	background: #47a3da;
-	border-radius: 50%;
-	margin: 0 0.1em;
-	border: 3px solid #fff;
+	margin: 0 0.6em;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-size: 75%;
 }
 
-.codropsheader nav a > span {
-	display: none;
-}
-
-.codropsheader nav a:hover:before {
-	content: attr(data-info);
-	color: #fff;
-	position: absolute;
-	width: 600%;
-	top: 120%;
-	text-align: right;
-	right: 0;
-	pointer-events: none;
-}
-
-.codropsheader nav a:hover {
-	background: #fff;
-}
-
-.bp-icon:after {
-	font-family: 'bpicons';
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
+.codrops-icon:before {
+	margin: 0 4px;
 	text-transform: none;
-	text-align: center;
-	color: #fff;
+	font-weight: normal;
+	font-style: normal;
+	font-variant: normal;
+	font-family: 'codropsicons';
+	line-height: 1;
+	speak: none;
 	-webkit-font-smoothing: antialiased;
 }
 
-.codropsheader nav .bp-icon:after {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	line-height: 2;
-	text-indent: 0;
-}
-
-.codropsheader nav a:hover:after {
-	color: #47a3da;
-}
-
-.bp-icon-next:after {
-	content: "\e000";
-}
-.bp-icon-drop:after {
+.codrops-icon-drop:before {
 	content: "\e001";
 }
-.bp-icon-archive:after {
-	content: "\e002";
-}
-.bp-icon-about:after {
-	content: "\e003";
-}
-.bp-icon-prev:after {
+
+.codrops-icon-prev:before {
 	content: "\e004";
 }
 
-.demos {
+/* Demo Buttons Style */
+.codrops-demos {
+	padding: 2em 0 3em;
+}
+
+.codrops-demos a {
 	display: inline-block;
-	line-height: 2.4em;
-	margin-left: 1em;
-	float: right;
+	margin: 0.5em;
+	padding: 0.7em 1.1em;
+	outline: none;
+	border: 3px solid rgba(0,0,0,0.3);
+	color: rgba(0,0,0,0.3);
+	text-decoration: none;
+	font-weight: 700;
+	opacity: 1;
+	-webkit-transition: all 0.2s;
+	transition: all 0.2s;
 }
 
-.demos a {
+.codrops-demos a:hover,
+.codrops-demos a.current-demo,
+.codrops-demos a.current-demo:hover,
+.codrops-demos a:focus {
+	border-color: #fff;
+	color: #fff;
+}
+
+/* Related demos */
+
+.codrops-related {
+	padding-bottom: 2em;
+	color: rgba(0,0,0,0.4);
+}
+
+.codrops-related a {
 	display: inline-block;
-	color: #47a3da;
-	margin: 0 0.5em;
+	margin-top: 0.5em;
 }
 
-.demos a:hover,
-.demos a:focus,
-.demos a.current {
-	color: rgba(0,0,0,.4);
-}
-
-@media screen and (max-width: 73.375em) {
-	.codropsheader {
-		text-align: center;
+@media screen and (max-width: 30em) {
+	body {
+		font-size: 90%;
 	}
-	.codropsheader h1,
-	.codropsheader nav,
-	.demos {
-		float: none;
+}
+
+@media screen and (max-height: 29em) {
+	.container {
+		height: auto;
+	}
+	.codrops-header {
+		position: relative;
 		margin: 0 auto;
-		padding: 0.15em 0;
+		height: auto;
+		max-width: 100%;
 	}
-	.codropsheader > span {
-		padding: 0;
-	}
-	.codropsheader > span span:after {
-		display: none;
-	}
-}
-
-@media screen and (max-height: 30.25em) {
-	.codropsheader nav { display: none; }
 }
