@@ -5,22 +5,24 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
   <title>codebeta</title>
+    <%= javascript_include_tag 'application', "data-turbolinks-track" => true %>
+  <%= csrf_meta_tag %>
   <%= stylesheet_link_tag 'jquery.jscrollpane.custom', media: "all", "data-turbolinks-track" => true %>
   <%= stylesheet_link_tag 'bookblock', media: "all", "data-turbolinks-track" => true %>
   <%= stylesheet_link_tag 'custom', media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag 'modernizr.custom.79639', "data-turbolinks-track" => true %>
-    <%= stylesheet_link_tag 'normalize', media: "all", "data-turbolinks-track" => true %>  
-    <%= stylesheet_link_tag 'demo', media: "all", "data-turbolinks-track" => true %>
-      <%= stylesheet_link_tag 'icons', media: "all", "data-turbolinks-track" => true %>
-        <%= stylesheet_link_tag 'style3', media: "all", "data-turbolinks-track" => true %>
-          <%= javascript_include_tag 'modernizr.custom', "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag 'normalize', media: "all", "data-turbolinks-track" => true %>  
+  <%= stylesheet_link_tag 'demo', media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag 'icons', media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag 'style3', media: "all", "data-turbolinks-track" => true %>
+
+
 
 
 
 
 </head>
 <body>
-
 
     <% flash.each do |name, msg| %>
         <%= content_tag(:div, msg, class: "alert alert-info") %>
