@@ -7,16 +7,26 @@
 		<div id="bb-bookblock" class="bb-bookblock">
 			<div class="bb-item" id="item1">
 				<div class="content">
-    			<div class="scroller">
-					<h1>Welcome to my app!</h1>
-					<% if user_signed_in? %>
-						#do something
-					<% else %>
-					<p>
+					<div class="scroller">
+						<h1>Welcome to CodeBeta !</h1>
+							<div class="analytics">
+								<p>Total Problems in the database <h1><%= @problems.count %> </h1> </p>
+								<p>Total Solutions in the database <h1><%= @solutions.count %> </h1> </p>
+								<%languages = @solutions.map{|a| a.language}%>
+									<%counts = Hash.new(0)%>
+									<%languages.each { |name| counts[name] += 1 }%>
+									<% counts.each do |key, value| %>
+								 		<p>Solutions in <h1><%= key + " : " + value.to_s %></h1></p>
+								 	<%end %> 
+							</div>
+						<% if user_signed_in? %>
+							#do something
+						<% else %>
+						<p>
 						<%= link_to "Log in", new_user_session_path, class: "btn btn-default btn-lg" %>
 						<%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary btn-lg" %>
-					</p>
-					<% end %>
+						</p>
+						<% end %>
     			</div>
 				</div>
 			</div>
