@@ -1,21 +1,36 @@
-<%= render "layouts/header" %>
-<p id="notice"><%= notice %></p>
+<div id="container" class="container">  
+	<nav id="bt-menu" class="bt-menu">
+		<a href="#" class="bt-menu-trigger"><span>Menu</span></a>
+		<%= render "layouts/header" %>
+	</nav>
+	<div class="bb-custom-wrapper">
+		<div id="bb-bookblock" class="bb-bookblock">
+			<div class="bb-item" id="item1">
+				<div class="content">
+    			<div class="scroller">
+					<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Solution for Problem:</strong>
-<%= @problem.title %>
-<%= @problem.id %>
-</p>
+					<p>
+					  <strong>Solution for Problem:</strong>
+					<%= @problem.title %>
+					<%= @problem.id %>
+					</p>
 
-<p>
-  <strong>Answer:</strong>
-  <%= @solution.answer %>
-  <%= @solution.id %>
-  <%= @solution.language %>
-</p>
+					<p>
+					  <strong>Answer:</strong>
+					  <%= @solution.answer %>
+					  <%= @solution.id %>
+					  <%= @solution.language %>
+					</p>
 
-<% if current_user.try(:admin?) or @solution.user == current_user %>
-	<%= link_to 'Edit', edit_problem_solution_path(@problem, @solution) %>
-	<%= link_to 'Destroy', problem_solution_path(@problem, @solution), method: :delete, data: { confirm: 'Are you sure?' } %> 
-<% end %>
-<%= link_to 'Back', problem_path(@problem) %>
+					<% if current_user.try(:admin?) or @solution.user == current_user %>
+						<%= link_to 'Edit', edit_problem_solution_path(@problem, @solution) %>
+						<%= link_to 'Destroy', problem_solution_path(@problem, @solution), method: :delete, data: { confirm: 'Are you sure?' } %> 
+					<% end %>
+					<%= link_to 'Back', problem_path(@problem) %>
+    			</div>
+				</div>
+			</div>
+		</div>
+	</div>  
+</div>

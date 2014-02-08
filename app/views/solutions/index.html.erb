@@ -1,35 +1,50 @@
-<%= render "layouts/header" %>
-<h1>Listing solutions</h1>
+<div id="container" class="container">  
+  <nav id="bt-menu" class="bt-menu">
+    <a href="#" class="bt-menu-trigger"><span>Menu</span></a>
+    <%= render "layouts/header" %>
+  </nav>
+  <div class="bb-custom-wrapper">
+    <div id="bb-bookblock" class="bb-bookblock">
+      <div class="bb-item" id="item1">
+        <div class="content">
+          <div class="scroller">
+            <h1>Listing solutions</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Answer</th>
-      <th>problem_id</th>
-      <th>User</th>
+            <table>
+              <thead>
+                <tr>
+                  <th>Answer</th>
+                  <th>problem_id</th>
+                  <th>User</th>
 
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
 
-  <tbody>
-    <% @solutions.each do |solution| %>
-      <tr>
-        <td><%= solution.answer %></td>
-        <td><%= solution.problem_id %></td>
-        <td><%= solution.user.name if solution.user %></td>
-        <td><%= link_to 'Show', problem_solution_path(@problem, solution) %></td>
-        <% if current_user.try(:admin?) or solution.user == current_user %>
-          <td><%= link_to 'Edit', edit_problem_solution_path(@problem, solution) %></td>
-          <td><%= link_to 'Destroy', problem_solution_path(@problem, solution), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+              <tbody>
+                <% @solutions.each do |solution| %>
+                  <tr>
+                    <td><%= solution.answer %></td>
+                    <td><%= solution.problem_id %></td>
+                    <td><%= solution.user.name if solution.user %></td>
+                    <td><%= link_to 'Show', problem_solution_path(@problem, solution) %></td>
+                    <% if current_user.try(:admin?) or solution.user == current_user %>
+                      <td><%= link_to 'Edit', edit_problem_solution_path(@problem, solution) %></td>
+                      <td><%= link_to 'Destroy', problem_solution_path(@problem, solution), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                    <% end %>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
 
-<br>
-<% if user_signed_in? %>
-  <%= link_to 'New Solution', new_problem_solution_path(@problem) %>
-<% end %>
+            <br>
+            <% if user_signed_in? %>
+              <%= link_to 'New Solution', new_problem_solution_path(@problem) %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  
+</div>
