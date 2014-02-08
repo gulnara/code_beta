@@ -1,6 +1,21 @@
-<%= render "layouts/header" %>
-<h1>Solution to<%= @problem.title %></h1>
+<div id="container" class="container">  
+	<nav id="bt-menu" class="bt-menu">
+		<a href="#" class="bt-menu-trigger"><span>Menu</span></a>
+		<%= render "layouts/header" %>
+	</nav>
+	<div class="bb-custom-wrapper">
+		<div id="bb-bookblock" class="bb-bookblock">
+			<div class="bb-item" id="item1">
+				<div class="content">
+    			<div class="scroller">
+					<h1>Solution to<%= @problem.title %></h1>
 
-<%= render 'form' %>
+					<%= render 'form' %>
 
-<%= link_to 'Back', problem_solutions_path(@problem) %>
+					<%= link_to 'Back', problem_solutions_path(@problem) %>
+    			</div>
+				</div>
+			</div>
+		</div>
+	</div>  
+</div>
