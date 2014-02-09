@@ -32,21 +32,6 @@ class UsersController < ApplicationController
     Solution.where(:user_id=> user.id).where(:problem_id=>problem.id).first
   end
 
-  # def self.send_problem
-  #   @users = User.all
-  #   @users.each do |user|
-
-  #   problem_to_be_sent = randomize(number_of_problems)
-  #     if  user_subscribed(user) == true
-  #       #make sure this problem has not been sent before
-  #       if check_if_problem_was_sent(user,problem_to_be_sent) == nil and check_if_user_solved_problem(user,problem_to_be_sent) == nil
-  #         UserMailer.email_problems(user,@problem_to_be_sent).deliver
-  #       end
-  #     end
-  #   end
-  # end
-
-
   # Iterates over all users and send 1 problem to each
   def self.send_problems_to_users
     problems = Problem.all
@@ -71,15 +56,11 @@ class UsersController < ApplicationController
     if check_if_problem_was_sent(user, p) != nil and check_if_user_solved_problem(user, p) != nil
       return send_problem(user, problems)
     else
+      #update sent_problem table
+      s = SentProblem.where(:user_id=> user.id).where(:problem_id=>p.id).create
+      s.save
       UserMailer.email_problems(user, p).deliver
     end
   end
-
-  # def self.send_problem
-  #   @users = User.all
-  #   @users.each do |user|
-  #     UserMailer.email_problems(user).deliver
-  #   end
-  # end
 
 end
