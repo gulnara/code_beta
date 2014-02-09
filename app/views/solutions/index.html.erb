@@ -13,6 +13,7 @@
             <table>
               <thead>
                 <tr>
+                  <th>Title</th>
                   <th>Answer</th>
                   <th>problem_id</th>
                   <th>User</th>
@@ -25,6 +26,7 @@
               <tbody>
                 <% @solutions.each do |solution| %>
                   <tr>
+                    <td><%= solution.title %></td>
                     <td><%= solution.answer %></td>
                     <td><%= solution.problem_id %></td>
                     <td><%= solution.user.name if solution.user %></td>

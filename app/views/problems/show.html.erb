@@ -29,9 +29,9 @@
 					  <table>
 						  <thead>
 						    <tr>
-						      <th>Answer</th>
+						      <th>Title</th>
 						      <th>Language</th>
-						      <th>User</th>
+						      <th>Sybmited by</th>
 						      <th></th>
 						      <th></th>
 						      <th></th>
@@ -40,7 +40,7 @@
 						  <tbody>
 						    <% @problem.solutions.each do |solution| %>
 						      <tr>
-						        <td><%= solution.answer %></td>
+						        <td><%= solution.title %></td>
 						       	<td><%=  solution.language %></p>
 						        <td><%= link_to solution.user.name,  user_path(solution.user.id) %></td>
 						        <% if user_signed_in? %>

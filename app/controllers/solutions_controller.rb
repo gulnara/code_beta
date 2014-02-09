@@ -80,6 +80,6 @@ class SolutionsController < ApplicationController
 
    
     def solution_params
-      params.require(:solution).permit(:answer, :problem_id, :id, :language )
+      params.require(:solution).permit(:answer, :problem_id, :id, :language, :title )
     end
 end

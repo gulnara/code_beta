@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140209013114) do
+ActiveRecord::Schema.define(version: 20140209185212) do
 
   create_table "problems", force: true do |t|
     t.text     "description", limit: 255
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20140209013114) do
     t.text     "source",      limit: 255
     t.string   "level"
     t.integer  "user_id"
+    t.integer  "rating"
   end
 
   add_index "problems", ["user_id"], name: "index_problems_on_user_id"
@@ -39,6 +40,8 @@ ActiveRecord::Schema.define(version: 20140209013114) do
     t.integer  "user_id"
     t.integer  "problem_id"
     t.string   "language"
+    t.string   "title"
+    t.integer  "rating"
   end
 
   add_index "solutions", ["user_id"], name: "index_solutions_on_user_id"
