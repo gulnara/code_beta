@@ -79,13 +79,17 @@ CodeBeta::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   #required for heroku
-  config.action_mailer.default_url_options = { :host => 'http://www.codebeta.co/' }
+  config.action_mailer.default_url_options = { :host => 'codebeta.co' }
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address => "127.0.0.1",
-    :port    => 25,
-    :domain  => 'http://www.codebeta.co/'
+    address: "smtp.mandrillapp.com",
+    port: 587,
+    domain: "codebeta.co",
+    authentication: "login",
+    enable_starttls_auto: true,
+    user_name: "gmirzaka@gmail.com",
+    password: "VqIGIiEUhJ-aoT8m8AqlZA"
   }
 
 
