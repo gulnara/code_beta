@@ -89,6 +89,10 @@ GEM
       mime-types
     pg (0.17.1)
     polyglot (0.3.3)
+    posix-spawn (0.3.8)
+    pygments.rb (0.5.4)
+      posix-spawn (~> 0.3.6)
+      yajl-ruby (~> 1.1.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -113,6 +117,7 @@ GEM
     rake (10.1.1)
     rdoc (4.1.1)
       json (~> 1.4)
+    redcarpet (3.0.0)
     rufus-scheduler (3.0.5)
       tzinfo
     sass (3.2.14)
@@ -152,6 +157,7 @@ GEM
     whenever (0.9.0)
       activesupport (>= 2.3.4)
       chronic (>= 0.6.3)
+    yajl-ruby (1.1.0)
 
 PLATFORMS
   ruby
@@ -166,8 +172,10 @@ DEPENDENCIES
   jquery-rails
   paperclip (~> 3.0)
   pg
+  pygments.rb
   rails (= 4.0.2)
   rails_12factor
+  redcarpet
   rufus-scheduler
   sass-rails (~> 4.0.0)
   sdoc

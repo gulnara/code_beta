@@ -21,10 +21,11 @@
 					  <%= @solution.title %>
 
 					<p>
-					  <strong>Answer:</strong>
-					  
-					  <%= @solution.answer %>
-					  <%= @solution.id %>
+					  <strong>Answer:</strong></p>
+					  <%= raw Pygments.highlight(@solution.answer, lexer: @solution.language) %>
+					
+			
+					 <p> <%= @solution.id %>
 					  <%= @solution.language %>
 					</p>
 
