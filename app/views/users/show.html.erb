@@ -74,6 +74,7 @@
             <p><%= link_to "#{@user.github}", @user.github %></p>
             <% url = @user.url %>
             <p><%= link_to "#{@user.url}" , url %></p>
+
             <div class="analytics">
             <p>You Added <h1><%= @user.solutions.count %> </h1> Solutions to the Database</p>
             <p>You Added <h1><%= @user.created_problems.count %> </h1> Problems to the Database</p>
@@ -84,6 +85,7 @@
               <p><%= "Your solutions in #{key} :" + value.to_s %></p>
             <%end %> 
           </div>
+
           </div>
         </div>
       </div>
