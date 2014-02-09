@@ -29,15 +29,15 @@ CodeBeta::Application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-  address: "smtp.gmail.com",
+  address: "smtp.mandrillapp.com",
   port: 587,
   domain: "codebeta.co",
-  authentication: "plain",
+  authentication: "login",
   enable_starttls_auto: true,
-  user_name: "gmirzaka",
-  password: "Mylife$33"
+  user_name: "gmirzaka@gmail.com",
+  password: "VqIGIiEUhJ-aoT8m8AqlZA"
 }
 
   #required for heroku
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => 'codebeta.co' }
 end
