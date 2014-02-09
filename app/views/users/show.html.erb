@@ -1,133 +1,98 @@
 <p class="flash"><%= flash.notice %></p>
 <div id="container" class="container">  
-
-                    <nav id="bt-menu" class="bt-menu">
-                <a href="#" class="bt-menu-trigger"><span>Menu</span></a>
-<%= render "layouts/header" %>
-            </nav>
-<div class="menu-panel">
+  <nav id="bt-menu" class="bt-menu">
+    <a href="#" class="bt-menu-trigger"><span>Menu</span></a>
+    <%= render "layouts/header" %>
+  </nav>
+  <div class="menu-panel">
     <h2><span>Problems</span></h2>
-                  <%= link_to 'New Problem', new_problem_path %>
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>Title</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                      </thead>
-
-                        <tbody>
-                        <%@problem.each do |problem|%>
-                        <%if problem.user_id == @user.id %>
-                     
-                        <tr>
-
-                            <td><%=  problem.title %></p>
-
-                       <td><%= link_to 'Show', problem %></td>
-        <% if current_user.try(:admin?) or problem.user_id == current_user.id  %>
-          <td><%= link_to 'Edit', edit_problem_path(problem) %></td>
-          <td><%= link_to 'Destroy', problem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-        <% end %>
-      </tr>
-                        <%end%>
-                        </tbody>
-                    </table>
-
-</div>
-    <div class="side-panel">
-        <ul id="side-toc" class="side-toc">
-            <h2><span>Solutions</span></h2>
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>Solution To</th>
-                          <th>In</th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                      </thead>
-                        <tbody>
-                       
-                        <%@user.solutions.each do |solution|%>
-                        <tr>
-                            <% p_id = solution.problem_id %>
-                            <%problem = @user.problems.find{|a| a.id == p_id}%>
-                            <td><%=  problem.title %></p>
-                            <td><%=  solution.language %></p>
-
-                            <td><%= link_to 'Show', problem_solution_path(:problem_id => solution.problem_id, :id => solution.id) %></td>
-                            <% if current_user.try(:admin?) or solution.user == current_user %>
-          <td><%= link_to 'Edit', edit_problem_solution_path(@problem, solution) %></td>
-          <td><%= link_to 'Destroy', problem_solution_path(@problem, solution), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-                        </tr>
-                        <%end%>
-                        </tbody>
-                    </table>
-        </ul>
-    </div>
-
-    <div class="bb-custom-wrapper">
-        <div id="bb-bookblock" class="bb-bookblock">
-            <div class="bb-item" id="item1">
-                <div class="content">
-                    <div class="scroller">
-                    <%= image_tag @user.avatar.url(:thumb) %>
-            
-                    <h1><%= @user.name %></h1>
-                    <p><%= @user.language %></p>
-                    <p><%= link_to "@#{@user.twitter}", "https://twitter.com/#{@user.twitter}" %></p>
-                    <p><%= link_to "#{@user.github}", @user.github %></p>
-                     <% url = @user.url %>
-                    <p><%= link_to "#{@user.url}" , url %></p>
-
-                    <div class="analytics">
-
-
-
-
-                      <p>You Added <h1><%= @user.solutions.count %> </h1> Solutions to the Database</p>
-
-                      <p>You Added <h1><%= @user.created_problems.count %> </h1> Problems to the Database</p>
-
-                      <%languages = @user.solutions.map{|a| a.language}%>
-                      <%counts = Hash.new(0)%>
-                      <%languages.each { |name| counts[name] += 1 }%>
-                      <% counts.each do |key, value| %>
-                        <p><%= "You solutions in #{key} :" + value.to_s %></p>
-                       <%end %> 
-                
-
-
-                    </div>
-
-
-                    </div>
-                </div>
-
-            </div>
-            
+    <%= link_to 'New Problem', new_problem_path %>
+    <table>
+      <thead>
+        <tr>
+        <th>Title</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%@problem.each do |problem|%>
+          <%if problem.user_id == @user.id %>
+            <tr>
+            <td><%=  problem.title %></p>
+            <td><%= link_to 'Show', problem %></td>
+            <% if current_user.try(:admin?) or problem.user_id == current_user.id  %>
+              <td><%= link_to 'Edit', edit_problem_path(problem) %></td>
+              <td><%= link_to 'Destroy', problem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
+          <% end %>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>
+  </div>
+  <div class="side-panel">
+    <ul id="side-toc" class="side-toc">
+    <h2><span>Solutions</span></h2>
+      <table>
+        <thead>
+          <tr>
+          <th>Solution To</th>
+          <th>In</th>
+          <th></th>
+          <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%@user.solutions.each do |solution|%>
+            <tr>
+            <% p_id = solution.problem_id %>
+            <%problem = @user.problems.find{|a| a.id == p_id}%>
+            <td><%=  problem.title %></p>
+            <td><%=  solution.language %></p>
+            <td><%= link_to 'Show', problem_solution_path(:problem_id => solution.problem_id, :id => solution.id) %></td>
+            <% if current_user.try(:admin?) or solution.user == current_user %>
+              <td><%= link_to 'Edit', edit_problem_solution_path(@problem, solution) %></td>
+              <td><%= link_to 'Destroy', problem_solution_path(@problem, solution), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
+          </tr>
+          <%end%>
+        </tbody>
+      </table>
+    </ul>
+  </div>
+  <div class="bb-custom-wrapper">
+    <div id="bb-bookblock" class="bb-bookblock">
+      <div class="bb-item" id="item1">
+        <div class="content">
+          <div class="scroller">
+            <%= image_tag @user.avatar.url(:thumb) %>
+            <h1><%= @user.name %></h1>
+            <p><%= @user.language %></p>
+            <p><%= link_to "@#{@user.twitter}", "https://twitter.com/#{@user.twitter}" %></p>
+            <p><%= link_to "#{@user.github}", @user.github %></p>
+            <% url = @user.url %>
+            <p><%= link_to "#{@user.url}" , url %></p>
+            <div class="analytics">
+            <p>You Added <h1><%= @user.solutions.count %> </h1> Solutions to the Database</p>
+            <p>You Added <h1><%= @user.created_problems.count %> </h1> Problems to the Database</p>
+            <%languages = @user.solutions.map{|a| a.language}%>
+            <%counts = Hash.new(0)%>
+            <%languages.each { |name| counts[name] += 1 }%>
+            <% counts.each do |key, value| %>
+              <p><%= "Your solutions in #{key} :" + value.to_s %></p>
+            <%end %> 
+          </div>
+          </div>
         </div>
-
-
- 
-
-        
-        <span id="tblcontents" class="menu-button">
-            <%= image_tag('menu.png', :size=>'40x40') %>
-        </span>
-        <span id="sidecontents" class="side-button">
-            <%= image_tag('more.png', :size=>'40x40') %>
-        </span>
-        
-
+      </div>
     </div>
-
-    </div><!-- /container -->
-
-
-
+    <span id="tblcontents" class="menu-button">
+      <%= image_tag('menu.png', :size=>'40x40') %>
+    </span>
+    <span id="sidecontents" class="side-button">
+      <%= image_tag('more.png', :size=>'40x40') %>
+    </span>
+  </div>
+</div><!-- /container -->
