@@ -13,4 +13,7 @@ class User < ActiveRecord::Base
 
   has_many :created_problems, class_name: 'Problem'
 
+  has_many :sent_problems
+
+
 end

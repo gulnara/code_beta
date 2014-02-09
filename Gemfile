@@ -51,6 +51,8 @@ gem 'aws-sdk', '~> 1.20.0'
 
 gem 'whenever', :require => false
 
+gem 'clockwork'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
