@@ -55,6 +55,10 @@ gem 'whenever', :require => false
 
 gem 'clockwork'
 
+gem 'redcarpet'
+
+gem 'pygments.rb'
+
 gem 'rufus-scheduler'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
