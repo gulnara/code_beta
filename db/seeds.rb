@@ -5,10 +5,3 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-problems_list = []
-
-problems_list.each do |title, description, source|
-
-	Problem.create(title: title, description: description, source: source)
-
-end
