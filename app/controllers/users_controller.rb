@@ -20,6 +20,7 @@ class UsersController < ApplicationController
     problem_to_be_sent = Problem.find_by(id: problem_id )
   end
 
+
   def self.user_subscribed(user)
     user.subscribed
   end

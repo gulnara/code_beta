@@ -43,6 +43,13 @@
                 <%= f.text_field :language, class: "form-control", :autofocus => true %>
               </div>
 
+              <div class="form-group">
+                <div class="checkbox">
+                  <%= f.label :subscribed %>
+                  <%= f.check_box :subscribed %>
+                </div>
+              </div>
+
 
               <div><%= f.label :email %><br />
               <%= f.email_field :email, :autofocus => true %></div>
