@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140208224444) do
+ActiveRecord::Schema.define(version: 20140209013114) do
 
   create_table "problems", force: true do |t|
-    t.string   "description"
+    t.text     "description", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "title"
-    t.string   "source"
+    t.text     "title",       limit: 255
+    t.text     "source",      limit: 255
     t.string   "level"
     t.integer  "user_id"
   end
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20140208224444) do
   end
 
   create_table "solutions", force: true do |t|
-    t.string   "answer"
+    t.text     "answer",     limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
