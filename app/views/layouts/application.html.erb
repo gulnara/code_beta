@@ -11,7 +11,6 @@
   <%= javascript_include_tag('modernizr.custom.79639') %>
   <%= stylesheet_link_tag('normalize')%>  
   <%= stylesheet_link_tag('demo')%>
-  <%= stylesheet_link_tag('icons')%>
   <%= stylesheet_link_tag('pygments')%>
   <%= stylesheet_link_tag('style3')%>
   <%= javascript_include_tag('application')%>
@@ -21,9 +20,7 @@
 </head>
 <body>
 
-    <% flash.each do |name, msg| %>
-        <%= content_tag(:div, msg, class: "alert alert-info") %>
-    <% end %>
+
     <%= yield %>
 
 

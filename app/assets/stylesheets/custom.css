@@ -1,5 +1,16 @@
-@import url(http://fonts.googleapis.com/css?family=Raleway:400,800,500);
 
+/* General Blueprint Style */
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+@font-face {
+	font-family: 'bpicons';
+	src:url('../fonts/bpicons/bpicons.eot');
+	src:url('../fonts/bpicons/bpicons.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/bpicons/bpicons.woff') format('woff'),
+		url('../fonts/bpicons/bpicons.ttf') format('truetype'),
+		url('../fonts/bpicons/bpicons.svg#bpicons') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
 html { height: 100%; }
 
 *,
@@ -14,9 +25,9 @@ html { height: 100%; }
 
 body {
 
-	font-family: 'Raleway', Calibri, Arial, sans-serif;
+	font-family: 'Lato', Calibri, Arial, sans-serif;
 	background: #fff;
-	font-weight: 400;
+	font-weight: 300;
 	font-size: 100%;
 	color: #ECF0F1;
 	height: 100%;
@@ -276,7 +287,7 @@ a:hover {
 }
 
 .content h2 {
-	font-weight: 400;
+	font-weight: 300;
 	font-size: 4em;
 	padding: 0 0 10px;
 	color: #333;
@@ -284,6 +295,12 @@ a:hover {
 
 	box-shadow: 0 10px 0 rgba(0,0,0,0.02);
 	text-shadow: 0 0 2px #fff;
+}
+
+.content h1 {
+	font-weight: 300;
+	font-size: 2em;
+	color: #ECF0F1;
 }
 
 .no-js .content h2 {
@@ -294,7 +311,7 @@ a:hover {
 	font-size: 1.2em;
 	color: #ECF0F1;
 	line-height: 1.6;
-	font-weight: 400;
+	font-weight: 300;
 	padding: 5px 8%;
 }
 
@@ -451,9 +468,6 @@ textarea.input-hg {
   height: auto;
 }
 
-___
-
-@import url(http://fonts.googleapis.com/css?family=Raleway:400,800,500);
 
 html { height: 100%; }
 

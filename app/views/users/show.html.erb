@@ -1,4 +1,3 @@
-<p class="flash"><%= flash.notice %></p>
 <div id="container" class="container">  
   <nav id="bt-menu" class="bt-menu">
     <a href="#" class="bt-menu-trigger"><span>Menu</span></a>
@@ -20,11 +19,10 @@
         <%@problem.each do |problem|%>
           <%if problem.user_id == @user.id %>
             <tr>
-            <td><%=  problem.title %></p>
-            <td><%= link_to 'Show', problem %></td>
+            <td><%= link_to problem.title, problem %></td>
             <% if current_user.try(:admin?) or problem.user_id == current_user.id  %>
               <td><%= link_to 'Edit', edit_problem_path(problem) %></td>
-              <td><%= link_to 'Destroy', problem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to 'Delete', problem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             <% end %>
           <% end %>
           </tr>
@@ -34,7 +32,7 @@
   </div>
   <div class="side-panel">
     <ul id="side-toc" class="side-toc">
-    <h2><span>Solutions</span></h2>
+    <h2>Solutions</h2>
       <table>
         <thead>
           <tr>
@@ -49,12 +47,12 @@
             <tr>
             <% p_id = solution.problem_id %>
             <%problem = @user.problems.find{|a| a.id == p_id}%>
-            <td><%=  problem.title %></p>
-            <td><%=  solution.language %></p>
-            <td><%= link_to 'Show', problem_solution_path(:problem_id => solution.problem_id, :id => solution.id) %></td>
+            <td><%= link_to problem.title, problem_solution_path(:problem_id => solution.problem_id, :id => solution.id) %></td>
+            <td><%=  solution.language %>
+
             <% if current_user.try(:admin?) or solution.user == current_user %>
               <td><%= link_to 'Edit', edit_problem_solution_path(@problem, solution) %></td>
-              <td><%= link_to 'Destroy', problem_solution_path(@problem, solution), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to 'Delete', problem_solution_path(@problem, solution), method: :delete, data: { confirm: 'Are you sure?' } %></td>
             <% end %>
           </tr>
           <%end%>
@@ -78,8 +76,8 @@
             <p><%= link_to "#{@user.url}" , url %></p>
 
             <div class="analytics">
-            <p>You Added <h1><%= @user.solutions.count %> </h1> Solutions to the Database</p>
-            <p>You Added <h1><%= @user.created_problems.count %> </h1> Problems to the Database</p>
+            <p>You Added <%= @user.solutions.count %> Solutions to the Database</p>
+            <p>You Added <%= @user.created_problems.count %>  Problems to the Database</p>
             <%languages = @user.solutions.map{|a| a.language}%>
             <%counts = Hash.new(0)%>
             <%languages.each { |name| counts[name] += 1 }%>
