@@ -67,7 +67,9 @@
       <div class="bb-item" id="item1">
         <div class="content">
           <div class="scroller">
+            <div class= "profile">
             <%= image_tag @user.avatar.url(:thumb) %>
+            </div>
             <h1><%= @user.name %></h1>
             <p><%= @user.language %></p>
             <p><%= link_to "@#{@user.twitter}", "https://twitter.com/#{@user.twitter}" %></p>
@@ -91,10 +93,10 @@
       </div>
     </div>
     <span id="tblcontents" class="menu-button">
-      <%= image_tag('menu.png', :size=>'40x40') %>
+      <%= image_tag('flask.png', :size=>'50x50') %>
     </span>
     <span id="sidecontents" class="side-button">
-      <%= image_tag('more.png', :size=>'40x40') %>
+      <%= image_tag('bulb.png', :size=>'50x50') %>
     </span>
   </div>
 </div><!-- /container -->

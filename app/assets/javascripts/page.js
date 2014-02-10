@@ -51,15 +51,15 @@ var Page = (function() {
 	function initEvents() {
 
 		// add navigation events
-		$navNext.on( 'click', function() {
-			bb.next();
-			return false;
-		} );
+		// $navNext.on( 'click', function() {
+		// 	bb.next();
+		// 	return false;
+		// } );
 
-		$navPrev.on( 'click', function() {
-			bb.prev();
-			return false;
-		} );
+		// $navPrev.on( 'click', function() {
+		// 	bb.prev();
+		// 	return false;
+		// } );
 		
 		// add swipe events
 		// $items.on( {
