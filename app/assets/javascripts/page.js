@@ -62,22 +62,22 @@ var Page = (function() {
 		} );
 		
 		// add swipe events
-		$items.on( {
-			'swipeleft'		: function( event ) {
-				if( $container.data( 'opened' ) ) {
-					return false;
-				}
-				bb.next();
-				return false;
-			},
-			'swiperight'	: function( event ) {
-				if( $container.data( 'opened' ) ) {
-					return false;
-				}
-				bb.prev();
-				return false;
-			}
-		} );
+		// $items.on( {
+		// 	'swipeleft'		: function( event ) {
+		// 		if( $container.data( 'opened' ) ) {
+		// 			return false;
+		// 		}
+		// 		bb.next();
+		// 		return false;
+		// 	},
+		// 	'swiperight'	: function( event ) {
+		// 		if( $container.data( 'opened' ) ) {
+		// 			return false;
+		// 		}
+		// 		bb.prev();
+		// 		return false;
+		// 	}
+		// } );
 
 		// show table of contents
 		$tblcontents.on( 'click', toggleTOC1 );
