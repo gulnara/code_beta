@@ -16,7 +16,7 @@
 									<%languages.each { |name| counts[name] += 1 }%>
               <% @d_3 = []%>
               <% counts.each do |key, value| %>
-                <% @d_3 << {"label" => key + " "+value.to_s, "value"=> value.to_s}%>
+                <% @d_3 << {"label" =>  key + " "+value.to_s, "value"=> value.to_s}%>
               <%end %> 
               <%@j_data = @d_3%>
 								 

@@ -61,9 +61,9 @@
             <h1><%= @user.name %></h1>
             <p><%= @user.language %></p>
             <p><%= link_to "@#{@user.twitter}", "https://twitter.com/#{@user.twitter}" %></p>
-            <p><%= link_to "#{@user.github}", @user.github %></p>
+            <p><%= link_to "github", @user.github %></p>
             <% url = @user.url %>
-            <p><%= link_to "#{@user.url}" , url %></p>
+            <p><%= link_to "www" , url %></p>
 
               <div class='analytics'>
               <%languages = @user.solutions.map{|a| a.language}%>
@@ -74,6 +74,8 @@
                 <% @d_3 << {"label" => key + " "+value.to_s, "value"=> value.to_s}%>
               <%end %> 
               <%@j_data = @d_3%>
+              <h2>Your Stats</h2>
+
               <svg id="test1" class="mypiechart"></svg>
               <svg id="test2" class="mypiechart"></svg>
               <svg id="test3" class="mypiechart"></svg>

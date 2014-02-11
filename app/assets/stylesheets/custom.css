@@ -54,7 +54,7 @@ border-radius: 50%;
 }
 
 a:hover {
-	color: #ECF0F1;
+	color: #BDF271;
 }
 
 .container,
@@ -291,21 +291,12 @@ a:hover {
 	background: linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
 }
 
-.content h2 {
-	font-weight: 300;
-	font-size: 4em;
-	padding: 0 0 10px;
-	color: #333;
-	margin: 0 1% 40px;
 
-	box-shadow: 0 10px 0 rgba(0,0,0,0.02);
-	text-shadow: 0 0 2px #fff;
-}
 
 .content h1 {
 	font-weight: 300;
 	font-size: 2em;
-	color: #ECF0F1;
+	color: #BDF271;
 }
 
 .no-js .content h2 {
@@ -314,7 +305,7 @@ a:hover {
 
 .content p {
 	font-size: 1.2em;
-	color: #ECF0F1;
+	color: #BDF271;
 	line-height: 1.6;
 	font-weight: 300;
 	padding: 5px 8%;
@@ -554,5 +545,25 @@ svg text{
 	font-weight: 300;
 	font-size: 100%;
 	color: #ECF0F1;
+	text-align: center;
 }
 
+
+.analytics {
+	padding-top: 20px;
+
+}
+
+.analytics h2 {
+	font-family: 'Lato', Calibri, Arial, sans-serif;
+	font-weight: 300;
+	font-size: 2em;
+	color: #ECF0F1;
+	padding-bottom: 20px;
+}
+
+.analytics p {
+
+	color: #ECF0F1;
+
+}

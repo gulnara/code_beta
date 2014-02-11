@@ -23,15 +23,13 @@
             <tbody>
             <% @problems.each do |problem| %>
               <tr>
-                <td><%= problem.title %></td>
-                <td><%= problem.source %></td>
-                <td><%= link_to 'Show', problem %></td>
-                <% if user_signed_in? %>
-                  <% if current_user.try(:admin?) or problem.user_id == current_user.id  %>
-                    <td><%= link_to 'Edit', edit_problem_path(problem) %></td>
-                    <td><%= link_to 'Destroy', problem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                  <% end %>
-                <% end %>
+                <td><%= link_to problem.title, problem %></td>
+                <%if problem.source_title == nil%>
+
+                  <td><%= problem.source_title = "Project Euler" %></td>
+                <%else%>
+                  <td><%= problem.source_title %></td>
+                <%end%>
               </tr>
             <% end %>
             </tbody>
