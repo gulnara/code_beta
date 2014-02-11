@@ -11,17 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140209185212) do
+ActiveRecord::Schema.define(version: 20140211175239) do
 
   create_table "problems", force: true do |t|
-    t.text     "description", limit: 255
+    t.text     "description",  limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "title",       limit: 255
-    t.text     "source",      limit: 255
+    t.text     "title",        limit: 255
+    t.text     "source",       limit: 255
     t.string   "level"
     t.integer  "user_id"
     t.integer  "rating"
+    t.string   "source_title"
   end
 
   add_index "problems", ["user_id"], name: "index_problems_on_user_id"

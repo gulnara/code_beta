@@ -29,9 +29,15 @@ body {
 	background: #fff;
 	font-weight: 300;
 	font-size: 100%;
-	color: #ECF0F1;
+
 	height: 100%;
 }
+
+p {
+	color: #ECF0F1;
+}
+
+
 
 .js body {
 	overflow: hidden;
@@ -54,7 +60,7 @@ border-radius: 50%;
 }
 
 a:hover {
-	color: #ECF0F1;
+	color: #BDF271;
 }
 
 .container,
@@ -291,21 +297,12 @@ a:hover {
 	background: linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
 }
 
-.content h2 {
-	font-weight: 300;
-	font-size: 4em;
-	padding: 0 0 10px;
-	color: #333;
-	margin: 0 1% 40px;
 
-	box-shadow: 0 10px 0 rgba(0,0,0,0.02);
-	text-shadow: 0 0 2px #fff;
-}
 
 .content h1 {
 	font-weight: 300;
 	font-size: 2em;
-	color: #ECF0F1;
+	color: #BDF271;
 }
 
 .no-js .content h2 {
@@ -314,7 +311,7 @@ a:hover {
 
 .content p {
 	font-size: 1.2em;
-	color: #ECF0F1;
+	color: #BDF271;
 	line-height: 1.6;
 	font-weight: 300;
 	padding: 5px 8%;
@@ -372,8 +369,10 @@ a:hover {
   color: #b2bcc5;
 }
 .form-control{
+
+	background-color: #34495E;
   border: 2px solid #bdc3c7;
-  color: #34495e;
+  color: #ECF0F1;
   font-family: "Lato", Helvetica, Arial, sans-serif;
   font-size: 15px;
   line-height: 1.467;
@@ -394,6 +393,8 @@ a:hover {
   color: #34495e;
   border-radius: 6px;
 }
+
+
 
 .form-group.focus .textareawidth:focus {
   width: 100%;
@@ -554,5 +555,146 @@ svg text{
 	font-weight: 300;
 	font-size: 100%;
 	color: #ECF0F1;
+	text-align: center;
 }
+
+
+.analytics {
+	padding-top: 20px;
+
+}
+
+.analytics h2 {
+	font-family: 'Lato', Calibri, Arial, sans-serif;
+	font-weight: 300;
+	font-size: 2em;
+	color: #ECF0F1;
+	padding-bottom: 20px;
+}
+
+.analytics p {
+
+	color: #ECF0F1;
+
+}
+
+label {
+	color: #BDF271;
+}
+
+.scroller h2 {
+	font-family: 'Lato', Calibri, Arial, sans-serif;
+	font-weight: 300;
+	font-size: 2em;
+	color: #BDF271;
+	padding-bottom: 20px;
+}
+
+.problem_description {
+
+	display: block;
+	background: #ECF0F1;
+	text-align: left; 
+	padding: 10px;
+	border-radius: 15px;
+
+}
+
+
+.problem_description p {
+	color: black;
+	font-size: 1em;
+
+	line-height: 1;
+	font-weight: 300;
+}
+
+.generic h2 {
+		font-family: 'Lato', Calibri, Arial, sans-serif;
+	font-weight: 300;
+	font-size: 1.5em;
+	color: #ECF0F1;
+	padding-top: 10px;
+	padding-bottom: 10px;
+
+}
+
+
+
+.text_area {
+
+width: 100%;
+  background-color: #34495e;
+  border-radius: 6px;
+    
+
+  border-color: #bdc3c7;;
+
+  outline: 0;
+
+
+  border: 2px solid #bdc3c7;
+  color: #ECF0F1;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.467;
+  padding: 8px 12px;
+
+  -webkit-appearance: none;
+  border-radius: 6px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+
+  -webkit-transition: border .25s linear, color .25s linear, background-color .25s linear;
+  transition: border .25s linear, color .25s linear, background-color .25s linear;
+}
+
+.text_area:-moz-placeholder {
+  color: #b2bcc5;
+  opacity: 1;
+}
+.text_area::-moz-placeholder {
+  color: #b2bcc5;
+  opacity: 1;
+}
+.text_area:-ms-input-placeholder {
+  color: #b2bcc5;
+}
+.text_area::-webkit-input-placeholder {
+  color: #b2bcc5;
+}
+.text_area.placeholder {
+  color: #b2bcc5;
+}
+
+
+
+.text_area:focus {
+  border-color: #1abc9c;
+  outline: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  width: 100%;
+}
+.text_area[disabled],
+.text_area[readonly],
+fieldset[disabled] .text_area {
+  background-color: #f4f6f6;
+  border-color: #d5dbdb;
+  color: #d5dbdb;
+  cursor: default;
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+}
+.text_area.flat {
+  border-color: transparent;
+}
+.text_area.flat:hover {
+  border-color: #bdc3c7;
+}
+.text_area.flat:focus {
+  border-color: #1abc9c;
+}
+
+
 

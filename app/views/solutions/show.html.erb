@@ -10,24 +10,22 @@
     			<div class="scroller">
 					<p id="notice"><%= notice %></p>
 
-					<p>
-					  <strong>Solution for Problem:</strong>
-					<%= @problem.title %>
-					<%= @problem.id %>
-					</p>
-
-					<p>
-					  <strong>Title:</strong>
-					  <%= @solution.title %>
-
-					<p>
-					  <strong>Answer:</strong></p>
-					  <%= raw Pygments.highlight(@solution.answer, lexer: @solution.language) %>
+					<div class = "generic">
+					  <h2 >solution to : <%= @problem.title %></h2>
+					</div>
+					<div class = "generic">
+					  <h2 > <%= @solution.title %> </h2>
+					  <h2>in : <%= @solution.language %></h2>
+					</div>  
+					  				  
+				
 					
-			
-					 <p> <%= @solution.id %>
-					  <%= @solution.language %>
-					</p>
+	
+					<div class = "problem_description"> <%= raw Pygments.highlight(@solution.answer, lexer: @solution.language) %>
+					
+					</div>
+				
+	
 
 					<% if current_user.try(:admin?) or @solution.user == current_user %>
 						<%= link_to 'Edit', edit_problem_solution_path(@problem, @solution) %>
