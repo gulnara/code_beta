@@ -65,56 +65,22 @@
             <% url = @user.url %>
             <p><%= link_to "#{@user.url}" , url %></p>
 
-            <div class="analytics">
+              <div class='analytics'>
+              <%languages = @user.solutions.map{|a| a.language}%>
+              <%counts = Hash.new(0)%>
+              <%languages.each { |name| counts[name] += 1 }%>
+              <% @d_3 = []%>
+              <% counts.each do |key, value| %>
+                <% @d_3 << {"label" => key + " "+value.to_s, "value"=> value.to_s}%>
+              <%end %> 
+              <%@j_data = @d_3%>
+              <svg id="test1" class="mypiechart"></svg>
+              <svg id="test2" class="mypiechart"></svg>
+              <svg id="test3" class="mypiechart"></svg>
 
-            <style>
 
-            #chart1 svg {
-              height: 400px;
-            }
 
-            </style>
-
-            <div id="chart1">
-              <svg></svg>
             </div>
-         <style>
-
-            #chart2 svg {
-              height: 400px;
-            }
-
-            </style>
-
-            <div id="chart2">
-              <svg></svg>
-            </div>
-
-                     <style>
-
-            #chart3 svg {
-              height: 400px;
-            }
-
-            </style>
-
-            <div id="chart3">
-              <svg></svg>
-            </div>
-
-            <%languages = @user.solutions.map{|a| a.language}%>
-            <%counts = Hash.new(0)%>
-            <%languages.each { |name| counts[name] += 1 }%>
-            <% @d_3 = []%>
-            <% counts.each do |key, value| %>
-              <% @d_3 << {"label" => key, "value"=> value.to_s}%>
-             
-
-              
-            <%end %> 
-            <% @new_data = @d_3%>
-          </div>
-
           </div>
         </div>
       </div>
@@ -132,46 +98,77 @@
 
               //Regular pie chart example
 nv.addGraph(function() {
-  var chart1 = nv.models.pieChart()
-      .x(function(d) { return d.label })
-      .y(function(d) { return d.value })
-      .showLabels(true);
+    var width = 300,
+        height = 300;
 
-    d3.select("#chart1 svg")
-        .datum(data1)
-      .transition().duration(1200)
-        .call(chart1);
+    var chart = nv.models.pieChart()
+        .x(function(d) { return d.label })
+        .y(function(d) { return d.value })
+        .color(['#BDF271', '#29D9C2'])
+        .showLabels(false)
+        .width(width)
+        .height(height);
 
-  return chart1;
+      d3.select("#test1")
+          .datum(data1)
+        .transition().duration(1200)
+          .attr('width', width)
+          .attr('height', height)
+          .call(chart);
+
+    chart.dispatch.on('stateChange', function(e) { nv.log('New State:', JSON.stringify(e)); });
+
+    return chart;
 });
-
 nv.addGraph(function() {
-  var chart2 = nv.models.pieChart()
-      .x(function(d) { return d.label })
-      .y(function(d) { return d.value })
-      .showLabels(true);
+    var width = 300,
+        height = 300;
 
-    d3.select("#chart2 svg")
-        .datum(data2)
-      .transition().duration(1200)
-        .call(chart2);
+    var chart = nv.models.pieChart()
+        .x(function(d) { return d.label })
+        .y(function(d) { return d.value })
+        .showLabels(false)
+        .color(['#6395FF', '#29D9C2'])
+        .width(width)
+        .height(height);
 
-  return chart2;
+      d3.select("#test2")
+          .datum(data2)
+        .transition().duration(1200)
+          .attr('width', width)
+          .attr('height', height)
+          .call(chart);
+
+    chart.dispatch.on('stateChange', function(e) { nv.log('New State:', JSON.stringify(e)); });
+
+    return chart;
 });
-
 nv.addGraph(function() {
-  var chart3 = nv.models.pieChart()
-      .x(function(d) { return d.label })
-      .y(function(d) { return d.value })
-      .showLabels(true);
+    var width = 300,
+        height = 300;
 
-    d3.select("#chart3 svg")
-        .datum(data3)
-      .transition().duration(1200)
-        .call(chart3);
+    var chart = nv.models.pieChart()
+        .x(function(d) { return d.label })
+        .y(function(d) { return d.value })
+        .showLabels(false)
+        .color([ '#50FFC5','#ACFF5D', '#54CCE8', '#6395FF','#54E868', '#F2295F'])
+        .width(width)
+        .height(height);
 
-  return chart3;
+      d3.select("#test3")
+          .datum(some_data)
+        .transition().duration(1200)
+          .attr('width', width)
+          .attr('height', height)
+          .call(chart);
+
+    chart.dispatch.on('stateChange', function(e) { nv.log('New State:', JSON.stringify(e)); });
+
+    return chart;
 });
+
+
+
 
 var t_p_l = "Total Problems " + <%= @problem.count.to_json %>;
 var t_y_p_l = "Your Problems " + <%= @user.created_problems.count.to_json %>;
@@ -181,6 +178,8 @@ var t_problem = <%= @problem.count.to_json %>;
 var y_problem = <%= @user.created_problems.count.to_json %>;
 var t_solution = <%= @solutions.count.to_json %>;
 var y_solution = <%= @user.solutions.count.to_json %>;
+
+
 //Pie chart example data. Note how there is only a single array of key-value pairs.
  var data1 = [
       {
@@ -203,14 +202,7 @@ var y_solution = <%= @user.solutions.count.to_json %>;
         "value" : y_solution
       } 
 ]
-// var new_data = <%= @d_3.to_json %>;
-var data3 = <%=@new_data.to_json%>;
 
-
-
-
-
-
-
+var some_data = <%= raw @j_data.to_json.chomp('"').reverse.chomp('"').reverse %>;
 
 </script>

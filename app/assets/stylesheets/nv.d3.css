@@ -38,6 +38,7 @@
   font-size: 13px;
   text-align: left;
   pointer-events: none;
+  colot: #ECF0F1;
 
   white-space: nowrap;
 
@@ -86,6 +87,7 @@
   margin: 0;
   padding: 5px 14px;
   text-align: center;
+  color: #ECF0F1;
 }
 
 .nvtooltip span {
@@ -317,8 +319,8 @@ svg .title {
 .nvd3 .nv-discretebar .nv-groups text,
 .nvd3 .nv-multibarHorizontal .nv-groups text {
   font-weight: bold;
-  fill: rgba(0,0,0,1);
-  stroke: rgba(0,0,0,0);
+  fill: #ECF0F1;
+  stroke: #ECF0F1;
 }
 
 /***********
@@ -334,7 +336,7 @@ svg .title {
 }
 
 .nvd3.nv-pie .nv-slice text {
-  stroke: #000;
+  fill-color: #ECF0F1;
   stroke-width: 0;
 }
 
@@ -346,8 +348,10 @@ svg .title {
 
 .nvd3.nv-pie .hover path {
   fill-opacity: .7;
+
 }
 .nvd3.nv-pie .nv-label {
+  fill: #ECF0F1;
   pointer-events: none;
 }
 .nvd3.nv-pie .nv-label rect {
@@ -557,7 +561,7 @@ svg .title {
 .nvd3.nv-bullet { font: 10px sans-serif; }
 .nvd3.nv-bullet .nv-measure { fill-opacity: .8; }
 .nvd3.nv-bullet .nv-measure:hover { fill-opacity: 1; }
-.nvd3.nv-bullet .nv-marker { stroke: #000; stroke-width: 2px; }
+.nvd3.nv-bullet .nv-marker { stroke: #ECF0F1; stroke-width: 2px; }
 .nvd3.nv-bullet .nv-markerTriangle { stroke: #000; fill: #fff; stroke-width: 1.5px; }
 .nvd3.nv-bullet .nv-tick line { stroke: #666; stroke-width: .5px; }
 .nvd3.nv-bullet .nv-range.nv-s0 { fill: #eee; }
@@ -631,7 +635,7 @@ svg .title {
 .nvd3.nv-sparklineplus .nv-currentValue {
   /*
   stroke: #444;
-  fill: #000;
+  fill: #ECF0F1;
   */
   font-weight: bold;
   font-size: 1.1em;
@@ -767,3 +771,5 @@ Interactive Layer
 .nvd3 line.nv-guideline {
   stroke: #ccc;
 }
+
+
