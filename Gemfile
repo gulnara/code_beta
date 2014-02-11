@@ -60,6 +60,8 @@ gem 'redcarpet'
 gem 'pygments.rb'
 
 gem 'rufus-scheduler'
+
+gem 'd3_rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
