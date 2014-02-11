@@ -62,6 +62,10 @@ gem 'pygments.rb'
 gem 'rufus-scheduler'
 
 gem 'd3_rails'
+
+group :production do
+  gem 'rails_12factor'
+end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
