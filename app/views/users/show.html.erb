@@ -4,31 +4,26 @@
     <%= render "layouts/header" %>
   </nav>
   <div class="menu-panel">
+    <ul id="menu-toc" class="menu-toc">
     <h2><span>Problems</span></h2>
-    <%= link_to 'New Problem', new_problem_path %>
+    <%= link_to 'CREAT A NEW PROBLEM', new_problem_path %>
     <table>
-      <thead>
-        <tr>
-        <th>Title</th>
-        <th></th>
-        <th></th>
-        <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <%@problem.each do |problem|%>
-          <%if problem.user_id == @user.id %>
-            <tr>
-            <td><%= link_to problem.title, problem %></td>
-            <% if current_user.try(:admin?) or problem.user_id == current_user.id  %>
-              <td><%= link_to 'Edit', edit_problem_path(problem) %></td>
-              <td><%= link_to 'Delete', problem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            <% end %>
-          <% end %>
+        <thead>
+          <tr>
+          <th>Title</th>
           </tr>
-        <%end%>
+        </thead>
+        <tbody>
+      <%@problem.each do |problem|%>
+      <tr>
+        <%if problem.user_id == @user.id %>
+          <td><%= link_to problem.title, problem %></td>
+        <% end %>
+      <%end%>
+      </tr>
       </tbody>
-    </table>
+      </table>
+    </ul>
   </div>
   <div class="side-panel">
     <ul id="side-toc" class="side-toc">
@@ -38,8 +33,7 @@
           <tr>
           <th>Solution To</th>
           <th>In</th>
-          <th></th>
-          <th></th>
+
           </tr>
         </thead>
         <tbody>
@@ -49,11 +43,6 @@
             <%problem = @user.problems.find{|a| a.id == p_id}%>
             <td><%= link_to problem.title, problem_solution_path(:problem_id => solution.problem_id, :id => solution.id) %></td>
             <td><%=  solution.language %>
-
-            <% if current_user.try(:admin?) or solution.user == current_user %>
-              <td><%= link_to 'Edit', edit_problem_solution_path(@problem, solution) %></td>
-              <td><%= link_to 'Delete', problem_solution_path(@problem, solution), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            <% end %>
           </tr>
           <%end%>
         </tbody>

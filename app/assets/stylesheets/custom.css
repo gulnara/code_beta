@@ -96,6 +96,8 @@ a:hover {
 	top: 0;
 	left: 0;
 	text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+	color: #2C3E50;
+	text-align: center;
 }
 .side-panel {
     background: #1ABC9C;
@@ -106,6 +108,8 @@ a:hover {
     top: 0;
     right: 0;
     text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    color: #2C3E50;
+    text-align: center;
 }
 
 .js .menu-panel {
@@ -118,61 +122,62 @@ a:hover {
     right: -240px;
 }
 
-.menu-panel h3 {
+.menu-panel h2 {
 	font-size: 1.8em;
 	padding: 20px;
-	font-weight: 500;
-	color: #fff;
+	font-weight: 300;
+	color: #2C3E50;
 	box-shadow: inset 0 -1px 0 rgba(0,0,0,0.05);
+
 } 
 
-.side-panel h3 {
+.side-panel h2 {
     font-size: 1.8em;
     padding-left: 20px;
-    font-weight: 500;
-    color: #fff;
+    font-weight: 300;
+    color: #2C3E50;
     box-shadow: inset 0 -1px 0 rgba(0,0,0,0.05);
+
 }
 
-.menu-toc {
-	list-style: none;
+.menu-toc th {
+	padding-top: 10px;
+	padding-bottom: 10px;
+
 }
 
-.side-toc {
-    list-style: none;
+.side-toc th {
+	padding-top: 10px;
+	padding-bottom: 10px;
+    
 }
 
-.menu-toc li a {
-	display: block;
-	color: #fff;
+.menu-toc a  {
+	
+	color: #BDF271;
 	font-size: 1.1em;
-	line-height: 3.5;
-	padding: 0 20px;
-	cursor: pointer;
-	background: #10B1C5;
-	border-bottom: 1px solid #10B1C5;
+	line-height: 2;
+	font-weight: 500;
+	padding: 0 10px;
+	
 }
 
-.side-toc li a {
-    display: block;
-    color: #fff;
-    font-size: 1.1em;
-    line-height: 3.5;
-    padding-left: 20px;
-	padding-top: 20px;
-    cursor: pointer;
-    background: #10B1C5;
-    border-bottom: 1px solid #10B1C5;
+.side-toc a {
+
+    color: #BDF271;
+	font-size: 1.1em;
+	line-height: 2;
+	font-weight: 500;
+	padding: 0 10px;
+
 }
 
-.menu-toc li a:hover,
-.menu-toc li.menu-toc-current a{
-	background: #4F78D7;
+.menu-toc a:hover {
+	color: #2C3E50;
 }
 
-.side-toc li a:hover,
-.side-toc li.side-toc-current a{
-    background: #4F78D7;
+.side-toc a:hover {
+	color: #2C3E50;
 }
 
 
@@ -515,14 +520,14 @@ body{
 }
 
  
- .dribble img:hover {
+ .menu-button img:hover {
  -webkit-animation-name: rotate;
  -webkit-animation-duration: 1s;
  -webkit-animation-iteration-count: 1;
  -webkit-animation-function: linear;}
  
 
- .behance img:hover {
+ .side-button img:hover {
  -webkit-animation-name: rotate;
  -webkit-animation-duration: 1s;
  -webkit-animation-iteration-count: 1;
@@ -535,7 +540,7 @@ body{
  -webkit-animation-function: linear;}
  
  
- .rss img:hover {
+ .icons img:hover {
  -webkit-animation-name: rotate;
  -webkit-animation-duration: 1s;
  -webkit-animation-iteration-count: 1;
