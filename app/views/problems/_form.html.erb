@@ -14,8 +14,11 @@
   <div class="form-group">
     <%= f.label :title %><br>
     <%= f.text_field :title , class: "form-control" %>
+    </div>
+    
     <%= f.label :description %><br>
-    <%= f.text_area :description , rows: 14, cols: 50 %>
+    <%= f.text_area :description , rows: 20, class: "text_area"%>
+    <div class="form-group">
     <%= f.label :source_title %><br>
     <%= f.text_field :source_title , class: "form-control" %>
     <%= f.label :source %><br>
