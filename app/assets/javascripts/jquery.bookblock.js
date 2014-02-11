@@ -92,7 +92,7 @@
 		// time (ms) between page switch, if autoplay is true
 		interval : 3000,
 		//if we want to navigate the slides with the keyboard arrows
-		keyboard : true,
+		// keyboard : true,
 		// callback after the flip transition
 		// old is the index of the previous item
 		// page is the current item's index
