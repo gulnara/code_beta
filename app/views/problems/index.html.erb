@@ -8,10 +8,10 @@
       <div class="bb-item" id="item1">
         <div class="content">
           <div class="scroller">
-          <h1>Listing problems</h1>
-          <%= link_to 'New Problem', new_problem_path %>
-          <table>
-            <thead>
+          <h1>All Problems</h1>
+          <%= link_to 'New Problem', new_problem_path, class: "btn btn-6 btn-6c" %>
+          <table class="rwd-table">
+          
               <tr>
                 <th>Title</th>
                 <th>Source</th>
@@ -19,8 +19,7 @@
                 <th></th>
                 <th></th>
               </tr>
-            </thead>
-            <tbody>
+
             <% @problems.each do |problem| %>
               <tr>
                 <td><%= link_to problem.title, problem %></td>
@@ -32,7 +31,7 @@
                 <%end%>
               </tr>
             <% end %>
-            </tbody>
+
           </table>
           </div>
         </div>

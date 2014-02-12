@@ -561,6 +561,7 @@ svg text{
 
 .analytics {
 	padding-top: 20px;
+	color: #ECF0F1;
 
 }
 
@@ -626,13 +627,8 @@ label {
 width: 100%;
   background-color: #34495e;
   border-radius: 6px;
-    
-
   border-color: #bdc3c7;;
-
   outline: 0;
-
-
   border: 2px solid #bdc3c7;
   color: #ECF0F1;
   font-family: "Lato", Helvetica, Arial, sans-serif;
@@ -697,4 +693,163 @@ fieldset[disabled] .text_area {
 }
 
 
+_______________
+ 
+  tr {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+  }
+ 
 
+.rwd-table {
+	 margin: 1em 0;
+  min-width: 300px;
+  width: 100%; 
+  background: #34495E;
+  text-rendering: optimizeLegibility;
+  color: #fff;
+  border-radius: .4em;
+  overflow: hidden;
+  text-align: left;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
+ }
+
+  tr {
+    border-color: lighten(#34495E, 10%);
+  }
+  th, td {
+
+    margin: .5em 1em;
+
+    @media (min-width: 300px) { 
+      padding: 1em !important; 
+    }
+  }
+  th, td:before {
+    color: #BDF271;
+  
+}
+
+
+______________
+.btn {
+	border: none;
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+	background: none;
+	cursor: pointer;
+	padding: 25px 80px;
+	display: inline-block;
+	margin: 15px 30px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 700;
+	outline: none;
+	position: relative;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.btn:after {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+/* Button 6e */
+.btn-6e {
+	border: 2px dashed #1ABC9C;
+	border-radius: 15px;
+	background: #1ABC9C;
+	padding: 20px 60px;
+	color: #2C3E50;
+	margin: 10px;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.btn-6e:hover {
+	background: transparent;
+	color: #1ABC9C;
+}
+
+i {
+	color: #ECF0F1;
+}
+
+/* Button 6h */
+.btn-6h {
+	border: 2px dotted #ECF0F1;
+	border-radius: 15px;
+	background: #34495E;
+	padding: 20px 60px;
+	color: #ECF0F1;
+	margin: 10px;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.btn-6h:hover {
+	background: transparent;
+	color: #ECF0F1;
+}
+/* Button 6c */
+.btn-6c {
+	border: 2px solid #1ABC9C;
+	border-radius: 60px;
+	background: #1ABC9C;
+	padding: 10px 20px;
+	color: #2C3E50;
+	margin: 20px;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.btn-6c:hover {
+	background: transparent;
+	color: #1ABC9C;
+}
+
+
+/* Button 6c */
+.btn-6k {
+	border: 2px solid #ECF0F1;
+	border-radius: 60px;
+	background: #ECF0F1;
+	padding: 10px 20px;
+	color: #1ABC9C;
+	margin: 20px;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.btn-6k:hover {
+	background: transparent;
+	color: #ECF0F1;
+}
+/* Button 6c */
+.btn-6l {
+	border: 2px solid #BDF271;
+	border-radius: 60px;
+	background: #BDF271;
+	padding: 10px 20px;
+	color: #34495E;
+	margin: 20px;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.btn-6l:hover {
+	background: transparent;
+	color: #BDF271;
+}
