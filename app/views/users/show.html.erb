@@ -14,12 +14,14 @@
           </tr>
         </thead>
         <tbody>
+        <%if @problem.any? == true%>
       <%@problem.each do |problem|%>
       <tr>
         <%if problem.user_id == @user.id %>
           <td><%= link_to problem.title, problem %></td>
 
         <% end %>
+      <%end%>
       <%end%>
       </tr>
       </tbody>
@@ -38,6 +40,7 @@
           </tr>
         </thead>
         <tbody>
+          <%if @user.solutions.any? == true%>
           <%@user.solutions.each do |solution|%>
             <tr>
             <% p_id = solution.problem_id %>
@@ -45,6 +48,7 @@
             <td><%= link_to problem.title, problem_solution_path(:problem_id => solution.problem_id, :id => solution.id) %></td>
             <td><%=  solution.language %>
           </tr>
+          <%end%>
           <%end%>
         </tbody>
       </table>
