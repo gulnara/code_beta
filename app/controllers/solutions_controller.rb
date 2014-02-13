@@ -50,6 +50,7 @@ class SolutionsController < ApplicationController
 
   def update
     if @solution.update(solution_params)
+      @solution.create_activity :update, owner: current_user
       redirect_to problem_solution_path, notice: 'Solution was successfully updated.' 
     else
       render action: 'edit' 
