@@ -1,4 +1,7 @@
 class Problem < ActiveRecord::Base
+	include PublicActivity::Model
+	tracked owner: ->(controller, model) { controller && controller.current_user }
+	
 	has_many :solutions
 	has_many :users, through: :solutions
 
