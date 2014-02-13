@@ -1,7 +1,8 @@
 class ProblemsController < ApplicationController
   before_action :set_problem, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :are_you_admin_or_creater, only: [:edit, :update, :destroy]
+  before_action :who_are_you, only: [:edit, :update, :destroy]
+
 
 
 
@@ -19,6 +20,7 @@ class ProblemsController < ApplicationController
 
 
   def edit
+
   end
 
 
@@ -47,6 +49,7 @@ class ProblemsController < ApplicationController
 
 
   def destroy
+
     @problem.destroy
     redirect_to problems_url 
 
@@ -58,13 +61,25 @@ class ProblemsController < ApplicationController
       @problem = Problem.find(params[:id])
     end
 
-    def are_you_admin_or_creater
-      if current_user.try(:admin?) or @problem.user_id == current_user.id
+
+
+    def who_are_you
+
+      @solutions = Solution.all
+      if current_user.try(:admin?)
         @problem = Problem.find(params[:id])
+
+      elsif @problem.user_id == current_user.id 
+        if @solutions.first {|s| s.problem_id == @problem.id} != nil 
+            redirect_to @problem, notice: 'There are solutions to this problem, you cannot edit or delete this problem.'
+        else
+          @problem = Problem.find(params[:id])
+        end
       else
         redirect_to problems_path, notice: "Not authorized to edit this problem"
       end
     end
+
 
  
     def problem_params
