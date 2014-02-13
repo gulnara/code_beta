@@ -48,7 +48,7 @@
 						
 						    <% @problem.solutions.each do |solution| %>
 						      <tr>
-						        <td ><%= link_to solution.title ,problem_solution_path(@problem, solution)  %></td>
+						        <td ><%= link_to "#{solution.title}" , problem_solution_path(@problem, solution)  %></td>
 						       	<td ><%=  solution.language %></td>
 						        <td ><%= link_to solution.user.name,  user_path(solution.user.id) %></td>
 							    <% end %>

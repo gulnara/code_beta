@@ -5,4 +5,8 @@ class Problem < ActiveRecord::Base
 	belongs_to :users
 
 	has_many :sent_problems
+	validates :description, presence: true
+	validates :title, presence: true
+	validates :source, presence: true
+	validates :source_title, presence: true
 end
