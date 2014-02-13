@@ -4,6 +4,7 @@ CodeBeta::Application.routes.draw do
     resources :solutions
   end
   devise_for :users
+  match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
   
   resources :users do
     get 'solutions', :on => :member

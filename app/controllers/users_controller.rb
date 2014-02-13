@@ -9,8 +9,23 @@ class UsersController < ApplicationController
   	# @problem =  Problem.find_by(id: @solution.problem_id )
   end
 
+  def index
+
+    @users = User.all
+
+  end
+
   def solutions
   	@solutions = Solution.all
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+
+    if @user.destroy
+        render action: 'index' , notice: "User deleted."
+    end
   end
 
   def self.randomize(number_of_problems)
