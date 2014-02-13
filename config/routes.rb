@@ -1,8 +1,15 @@
 CodeBeta::Application.routes.draw do
   
+  
+
+  resources :friendships
+
+  resources :activities
+
   resources :problems do
     resources :solutions
   end
+
   devise_for :users
   match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
   

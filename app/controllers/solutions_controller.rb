@@ -38,7 +38,9 @@ class SolutionsController < ApplicationController
     @solution = current_user.solutions.build(solution_params)
     @solution.problem_id = @problem.id
 
+
     if @solution.save
+      @solution.create_activity :create, owner: current_user
       redirect_to problem_solution_path(@problem, @solution), notice: 'Solution was successfully created.' 
     else
       render action: 'new' 
@@ -48,6 +50,7 @@ class SolutionsController < ApplicationController
 
   def update
     if @solution.update(solution_params)
+      @solution.create_activity :update, owner: current_user
       redirect_to problem_solution_path, notice: 'Solution was successfully updated.' 
     else
       render action: 'edit' 

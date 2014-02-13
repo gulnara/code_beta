@@ -11,7 +11,7 @@
 					<p id="notice"><%= notice %></p>
 
 					<div class = "generic">
-					  <h2 >solution to : <%= @problem.title %></h2>
+					  <h2 >solution to : <%= link_to @problem.title, @problem %></h2>
 					</div>
 					<div class = "generic">
 					  <h2 > <%= @solution.title %> </h2>

@@ -63,6 +63,10 @@ gem 'rufus-scheduler'
 
 gem 'd3_rails'
 
+gem "nifty-generators", :group => :development
+
+gem 'public_activity'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
@@ -75,3 +79,5 @@ gem 'd3_rails'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+gem "mocha", group: :test
