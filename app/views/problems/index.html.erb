@@ -13,8 +13,10 @@
           <table class="rwd-table">
           
               <tr>
-                <th>Title</th>
-                <th>Source</th>
+                <th><%= sortable 'title' %></th>
+                <th> Solutions </th>
+                <th><%= sortable 'source_title', 'Source' %></th>
+                <th><%= sortable 'created_at', 'Created' %></th>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -23,12 +25,14 @@
             <% @problems.each do |problem| %>
               <tr>
                 <td><%= link_to problem.title, problem %></td>
+                <td><%= problem.solutions.count %></td>
                 <%if problem.source_title == nil%>
 
                   <td><%= problem.source_title = "Project Euler" %></td>
                 <%else%>
                   <td><%= problem.source_title %></td>
                 <%end%>
+                <td><%= problem.created_at.strftime("%B %e, %Y") %></td>
               </tr>
             <% end %>
 
