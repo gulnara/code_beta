@@ -1,7 +1,7 @@
-updated solution
+updated a solution to
 
 <% if activity.trackable %>
-  on <%= link_to activity.trackable.problem.title, activity.trackable.problem %>
+  <%= link_to activity.trackable.problem.title, activity.trackable.problem %>
 <% else %>
   which has since been removed
 <% end %>

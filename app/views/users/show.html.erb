@@ -78,30 +78,37 @@
                 <% @d_3 << {"label" => key + " "+value.to_s, "value"=> value.to_s}%>
               <%end %> 
               <%@j_data = @d_3%>
-              <h2>Your Stats</h2>
+              <h2>your stats</h2>
 
               <svg id="test1" class="mypiechart"></svg>
               <svg id="test2" class="mypiechart"></svg>
               <svg id="test3" class="mypiechart"></svg>
 
-              <h2>Friends</h2>
+              
 <ul>
   <% for friendship in @user.friendships %>
+  <% if friendship.friend.name != nil%>
+  <h2>following</h2>
     <li>
       <%=h friendship.friend.name %>
       (<%= link_to "remove", friendship, :method => :delete %>)
     </li>
   <% end %>
-</ul>
-
-<p><%= link_to "Find Friends", users_path %></p>
-
-<h2>Friended by Users</h2>
-<ul>
-  <% for user in @user.inverse_friends %>
-    <li><%=h user.name %></li>
   <% end %>
 </ul>
+</br>
+
+<!-- <p><%= link_to "followers", users_path %></p> -->
+
+<ul>
+  <% for user in @user.inverse_friends %>
+    <% if user.name != nil%>
+    <h2>followers</h2>
+    <li><%= user.name %></li>
+    <% end %>
+  <% end %>
+</ul>
+</br>
 
 
 
