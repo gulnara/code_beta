@@ -1,4 +1,5 @@
 class ProblemsController < ApplicationController
+  helper_method :sort_column, :sort_direction
   before_action :set_problem, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :who_are_you, only: [:edit, :update, :destroy]
@@ -6,8 +7,9 @@ class ProblemsController < ApplicationController
 
 
 
+
   def index
-    @problems = Problem.all
+    @problems = Problem.order(sort_column + " " + sort_direction)
   end
 
   def show
@@ -61,6 +63,13 @@ class ProblemsController < ApplicationController
       @problem = Problem.find(params[:id])
     end
 
+    def sort_column
+      Problem.column_names.include?(params[:sort]) ? params[:sort] : "created_at"
+    end
+    
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
+    end
 
 
     def who_are_you
