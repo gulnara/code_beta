@@ -38,9 +38,11 @@ class SolutionsController < ApplicationController
     @solution = current_user.solutions.build(solution_params)
     @solution.problem_id = @problem.id
 
-
     if @solution.save
       @solution.create_activity :create, owner: current_user
+      current_number = @problem.solutions_number
+      new_number = current_number + 1
+      @problem.update_column(:solutions_number, new_number)
       redirect_to problem_solution_path(@problem, @solution), notice: 'Solution was successfully created.' 
     else
       render action: 'new' 

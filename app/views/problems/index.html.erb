@@ -11,12 +11,12 @@
           <h1>All Problems</h1>
 
           <%= link_to 'New Problem', new_problem_path, class: "btn btn-6 btn-6c" %>
-            
+
           <table class="rwd-table">
           
               <tr>
                 <th><%= sortable 'title' %></th>
-                <th> Solutions </th>
+                <th><%= sortable 'solutions_number', 'Solutions' %></th>
                 <th><%= sortable 'source_title', 'Source' %></th>
                 <th><%= sortable 'created_at', 'Created' %></th>
                 <th></th>
@@ -27,7 +27,7 @@
             <% @problems.each do |problem| %>
               <tr>
                 <td><%= link_to problem.title, problem %></td>
-                <td><%= problem.solutions.count %></td>
+                <td><%= problem.solutions_number %></td>
                 <%if problem.source_title == nil%>
 
                   <td><%= problem.source_title = "Project Euler" %></td>
