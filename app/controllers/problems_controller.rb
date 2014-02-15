@@ -79,7 +79,7 @@ class ProblemsController < ApplicationController
         @problem = Problem.find(params[:id])
 
       elsif @problem.user_id == current_user.id 
-        if @solutions.first {|s| s.problem_id == @problem.id} != nil 
+        if @solutions.find {|s| s.problem_id == @problem.id} != nil 
             redirect_to @problem, notice: 'There are solutions to this problem, you cannot edit or delete this problem.'
         else
           @problem = Problem.find(params[:id])
