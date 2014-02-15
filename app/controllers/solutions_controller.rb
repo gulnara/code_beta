@@ -39,7 +39,7 @@ class SolutionsController < ApplicationController
     @solution.problem_id = @problem.id
 
     if @solution.save
-      @solution.create_activity :create, owner: current_user
+      # @solution.create_activity :create, owner: current_user
       current_number = @problem.solutions_number
       new_number = current_number + 1
       @problem.update_column(:solutions_number, new_number)
@@ -52,7 +52,6 @@ class SolutionsController < ApplicationController
 
   def update
     if @solution.update(solution_params)
-      @solution.create_activity :update, owner: current_user
       redirect_to problem_solution_path, notice: 'Solution was successfully updated.' 
     else
       render action: 'edit' 
@@ -65,7 +64,7 @@ class SolutionsController < ApplicationController
     id = :problem_id
     @problem =  Problem.find(params[id])
     @solution.destroy
-    redirect_to problem_solutions_path(@problem) 
+    redirect_to problem_path(@problem) 
   end
 
   private
