@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+  
   def show
   	@user = User.find(params[:id])
   	solutions
@@ -21,6 +23,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    # QUESTION: What happens if we destroy a user that has already submitted problems?
     @user = User.find(params[:id])
     @user.destroy
 
@@ -30,15 +33,15 @@ class UsersController < ApplicationController
   end
 
 
-  def self.user_subscribed(user)
-    user.subscribed
-  end
+
 
   def self.check_if_problem_was_sent(user,problem)
+    # TODO: Might be faster to call the #any? method
     SentProblem.where(:user_id=> user.id).where(:problem_id=>problem.id).first
   end
 
   def self.check_if_user_solved_problem(user,problem)
+    # TODO: Might be faster to call the #any? method
     Solution.where(:user_id=> user.id).where(:problem_id=>problem.id).first
   end
 
@@ -49,7 +52,7 @@ class UsersController < ApplicationController
     
     users.each do |user|
  
-      if  user_subscribed(user) == true
+      if  user.subscribed == true
         send_problem(user, @problems)
       end
       
