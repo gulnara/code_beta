@@ -46,8 +46,11 @@
     <p><%= link_to "github", @user.github %></p>
     <% url = @user.url %>
     <p><%= link_to "www" , url %></p>
+    <li>
+      <%if current_user != @user && current_user.friend_ids.find{|a| a = @user.id } == nil%>
 
-
+    <%= link_to "Follow", friendships_path(:friend_id => @user.id), :method => :post %></li>
+      <%end%>
       <%languages = @user.solutions.map{|a| a.language}%>
       <%counts = Hash.new(0)%>
       <%languages.each { |name| counts[name] += 1 }%>
