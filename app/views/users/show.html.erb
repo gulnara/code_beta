@@ -1,6 +1,4 @@
-<div class="container">
-
-  <div class="left-sidebar">
+ <div class="left-sidebar">
     <h2>Problems</h2>
     <%= link_to 'CREAT A NEW PROBLEM', new_problem_path %>
     <h2>Title</h2>
@@ -95,12 +93,12 @@
 </div>
 </div>
 
-</div>
+
 <script>
 
 nv.addGraph(function() {
-    var width = 300,
-        height = 300;
+    var width = 280,
+        height = 280;
 
     var chart = nv.models.pieChart()
         .x(function(d) { return d.label })
@@ -123,8 +121,8 @@ nv.addGraph(function() {
 });
 
 nv.addGraph(function() {
-    var width = 350,
-        height = 350;
+    var width = 300,
+        height = 300;
 
     var chart = nv.models.pieChart()
         .x(function(d) { return d.label })
@@ -147,8 +145,8 @@ nv.addGraph(function() {
 });
 
 nv.addGraph(function() {
-    var width = 300,
-        height = 300;
+    var width = 260,
+        height = 260;
 
     var chart = nv.models.pieChart()
         .x(function(d) { return d.label })

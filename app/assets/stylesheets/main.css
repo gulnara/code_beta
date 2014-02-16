@@ -6,6 +6,7 @@ body {
   font-family: 'Lato', Calibri, Arial, sans-serif;
   background: #2C3E50;
   font-weight: 300;
+  font-size: 2em;
   color: #ECF0F1;
   text-align: center;
 }
@@ -128,7 +129,7 @@ border-radius: 50%;
 
 .content {
   position: relative;
-  padding: 40px;
+
 }
 .content h1 {
   font-weight: 300;
@@ -331,7 +332,7 @@ i {
   border: 2px dotted #ECF0F1;
   border-radius: 15px;
   background: #34495E;
-  padding: 20px 60px;
+  padding: 20px 30px;
   color: #ECF0F1;
   margin: 10px;
   -webkit-transition: all 0.3s;
@@ -670,9 +671,39 @@ fieldset[disabled] .text_area {
 }
 
 
-.header li {
-  display: inline-block;
-  padding: 0 20px;
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+background-color: #2C3E50;
+border: none;
 }
+
+.navbar-default {
+background-color: #2C3E50;
+border-color: #2C3E50;
+}
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand {
+color: #BDF271;
+background-color: transparent;
+font-size: 30px;
+}
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+color: #1ABC9C;
+background-color: transparent;
+}
+
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+color: #ECF0F1;
+background-color: transparent;
+}
+
+.navbar-default .navbar-nav > li > a {
+color: #1ABC9C;
+float: center !important;
+text-align: center !important;
+}
+
 
 

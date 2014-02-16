@@ -1,16 +1,31 @@
-<div class = 'header'>
-	<ul>
-        <li class = "icons"><%= link_to(image_tag('rocket.png', :size=>'30x30'), root_path) %></li>
-        <% if user_signed_in? %>
-          <li class = "icons"><%= link_to(image_tag('flask.png', :size=>'30x30'), problems_path) %></li>
-          <li class = "icons"><%= link_to(image_tag('geek.png', :size=>'30x30'), current_user) %></li>
-          <li class = "icons"><%= link_to(image_tag('tools2.png', :size=>'30x30'), edit_user_registration_path)  %></li>
 
-        	<li class = "icons"><%= link_to(image_tag('logout.png', :size=>'30x30'), destroy_user_session_path, method: :delete)  %></li>
+
+<nav class="navbar navbar-default" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+ 
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse navbar-ex1-collapse">
+    <ul class="nav navbar-nav navbar-right">
+         <li class = "icons"><%= link_to 'CodeBeta', root_path %></li>
+        <% if user_signed_in? %>
+          <li class = "icons"><%= link_to 'Problems', problems_path %></li>
+          <li class = "icons"><%= link_to 'Profile', current_user %></li>
+          <li class = "icons"><%= link_to 'Settings', edit_user_registration_path  %></li>
+
+        	<li class = "icons"><%= link_to 'Log out', destroy_user_session_path, method: :delete  %></li>
 
         <% else %>
-          <li class = "icons"><%= link_to(image_tag('login.png', :size=>'30x30'), new_user_session_path)  %></li>
+          <li class = "icons"><%= link_to 'Log In', new_user_session_path %></li>
         <% end %>
-        
-      </ul>
-</div>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</nav>
