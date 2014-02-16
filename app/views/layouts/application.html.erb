@@ -5,23 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
   <title>codebeta</title>
-  <%= stylesheet_link_tag('jquery.jscrollpane.custom') %>
-  <%= stylesheet_link_tag('bookblock') %>
-  <%= stylesheet_link_tag('custom') %>
-  <%= javascript_include_tag('modernizr.custom.79639') %>
-  <%= stylesheet_link_tag('normalize')%>  
-  <%= stylesheet_link_tag('demo')%>
-  <%= stylesheet_link_tag('pygments')%>
-  <%= stylesheet_link_tag('style3')%>
+  
+  <%= stylesheet_link_tag('application')%>
   <%= javascript_include_tag('application')%>
-  <%= javascript_include_tag('d3.v3')%>
-  <%= javascript_include_tag('legend')%>
-  <%= javascript_include_tag('nv.d3')%>
-  <%= javascript_include_tag('pie')%>
-  <%= javascript_include_tag('pieChart')%>
-  <%= javascript_include_tag('utils')%>
   <%= csrf_meta_tag %>
-
 
 </head>
 <body>
@@ -29,21 +16,28 @@
 
     <%= yield %>
 
+  <div class="footer-menu">
 
-<%= javascript_include_tag('classie')%>
-<%= javascript_include_tag('borderMenu')%>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<%= javascript_include_tag('jquery.mousewheel') %>
-<%= javascript_include_tag('jquery.jscrollpane.min') %>
-<%= javascript_include_tag('jquerypp.custom') %>
-<%= javascript_include_tag('jquery.bookblock') %>
-<%= javascript_include_tag('page') %>
-<script>
-    $(function() {
+    <div class="closed">
+      <ul>
+        <li class="toggle-footer-menu"><%= image_tag('menu2.png', :size=>'30x30')  %></li>
+      </ul>
+    </div>
 
-        Page.init();
+    <div class="open">
+      <ul>
+        <li class = "icons"><%= link_to(image_tag('rocket.png', :size=>'30x30'), root_path) %></li>
+        <% if user_signed_in? %>
+          <li class = "icons"><%= link_to(image_tag('flask.png', :size=>'30x30'), problems_path) %></li>
+          <li class = "icons"><%= link_to(image_tag('geek.png', :size=>'30x30'), current_user) %></li>
 
-    });
-</script>
+        <% else %>
+          <li class = "icons"><%= link_to(image_tag('login.png', :size=>'30x30'), new_user_session_path)  %></li>
+        <% end %>
+        <li class="toggle-footer-menu"><%= image_tag('menu.png', :size=>'30x30')  %></li>
+      </ul>
+    </div>
+
+  </div>
 </body>
 </html>

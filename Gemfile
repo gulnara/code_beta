@@ -34,7 +34,6 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem 'bootstrap-sass', '~> 3.0.3.0'
 
 group :development, :test do
      gem 'sqlite3'

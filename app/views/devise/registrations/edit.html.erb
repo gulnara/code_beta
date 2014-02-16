@@ -1,87 +1,77 @@
-<div id="container" class="container">  
-  <nav id="bt-menu" class="bt-menu">
-    <a href="#" class="bt-menu-trigger"><span>Menu</span></a>
-    <%= render "layouts/header" %>
-  </nav>
-  <div class="bb-custom-wrapper">
-    <div id="bb-bookblock" class="bb-bookblock">
-      <div class="bb-item" id="item1">
-        <div class="content">
-          <div class="scroller">
-            <h2>Update Your Settings</h2>
+<div class="container">
+  <div class="content">
+    <h2>Update Your Settings</h2>
 
-            <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put , :multipart => true }) do |f| %>
-              <%= devise_error_messages! %>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put , :multipart => true }) do |f| %>
+      <%= devise_error_messages! %>
 
-              <%= f.label :avatar %>
-              <%= f.file_field :avatar %>
+      <%= f.label :avatar %>
+      <%= f.file_field :avatar %>
 
-              <div class="form-group">
-                <%= f.label :name %>
-                <%= f.text_field :name, class: "form-control", :autofocus => true %>
-              </div>
-
-              <div class="form-group">
-                <%= f.label :twitter %>
-                <%= f.text_field :twitter, class: "form-control", :autofocus => true %>
-              </div>
-
-                <div class="form-group">
-                <%= f.label :github %>
-                <%= f.text_field :github, class: "form-control", :autofocus => true %>
-              </div>
-
-                <div class="form-group">
-                <%= f.label :url %>
-                <%= f.text_field :url, class: "form-control", :autofocus => true %>
-              </div>
-
-                <div class="form-group">
-                <%= f.label :language %>
-                <%= f.text_field :language, class: "form-control", :autofocus => true %>
-              </div>
-
-              <div class="form-group">
-              <div><%= f.label :email %><br />
-              <%= f.email_field :email, class: "form-control",:autofocus => true %></div>
-              </div>
-
-              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-                <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-              <% end %>
-
-              <div class="form-group">
-              <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-              <%= f.password_field :password, :autocomplete => "off", class: "form-control" %></div>
-              </div>
-
-              <div class="form-group">
-              <div><%= f.label :password_confirmation %><br />
-              <%= f.password_field :password_confirmation, class: "form-control" %></div>
-              </div>
-
-              <div class="form-group">
-              <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-              <%= f.password_field :current_password , class: "form-control" %></div>
-              </div>
-
-
-                <div class="checkbox">
-                  <%= f.label "Subscribe to Recieve One Algorithm Problem A Day!" %>
-                  <%= f.check_box :subscribed %>
-                </div>
-      
-
-              <div  ><%= f.submit "Update", class: "btn btn-6 btn-6e" %></div>
-            <% end %>
-
-
-            <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, class: "btn btn-6 btn-6h" %></p>
-
-            <%= link_to "Back", :back %>
-            </div>
-        </div>
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control", :autofocus => true %>
       </div>
-    </div>
-  </div>  
+
+      <div class="form-group">
+        <%= f.label :twitter %>
+        <%= f.text_field :twitter, class: "form-control", :autofocus => true %>
+      </div>
+
+        <div class="form-group">
+        <%= f.label :github %>
+        <%= f.text_field :github, class: "form-control", :autofocus => true %>
+      </div>
+
+        <div class="form-group">
+        <%= f.label :url %>
+        <%= f.text_field :url, class: "form-control", :autofocus => true %>
+      </div>
+
+        <div class="form-group">
+        <%= f.label :language %>
+        <%= f.text_field :language, class: "form-control", :autofocus => true %>
+      </div>
+
+      <div class="form-group">
+      <div><%= f.label :email %><br />
+      <%= f.email_field :email, class: "form-control",:autofocus => true %></div>
+      </div>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+
+      <div class="form-group">
+      <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+      <%= f.password_field :password, :autocomplete => "off", class: "form-control" %></div>
+      </div>
+
+      <div class="form-group">
+      <div><%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, class: "form-control" %></div>
+      </div>
+
+      <div class="form-group">
+      <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+      <%= f.password_field :current_password , class: "form-control" %></div>
+      </div>
+
+
+        <div class="checkbox">
+          <%= f.label "Subscribe to Recieve One Algorithm Problem A Day!" %>
+          <%= f.check_box :subscribed %>
+        </div>
+
+
+      <div  ><%= f.submit "Update", class: "btn btn-6 btn-6e" %></div>
+    <% end %>
+
+
+    <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, class: "btn btn-6 btn-6h" %></p>
+
+    <%= link_to "Back", :back , class: "btn btn-6 btn-6k" %>
+  </div>
 </div>
+
+    

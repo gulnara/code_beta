@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   	user_id = @user.id
   	@problem = Problem.all
   	@created_problem = Problem.find_by(user_id: @user.id )
+    @created_problems = Problem.where(user_id: @user.id ).all
     @activities = PublicActivity::Activity.order("created_at desc").where(owner_id: current_user.friend_ids, owner_type: "User")
   	# @solution = Solution.find(params[:id])
   	# @problem =  Problem.find_by(id: @solution.problem_id )
