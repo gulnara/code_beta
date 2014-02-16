@@ -662,11 +662,15 @@ fieldset[disabled] .text_area {
  }
 }
 
-
+@media(max-width: 480px){
+.content.right-active {
+  margin-left: 50px;
+}
+}
 
 @media(max-width: 480px){
 .content.left-active {
-  margin-left: 250px;
+  margin-left: 230px;
 }
 }
 
