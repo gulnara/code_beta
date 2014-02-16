@@ -1,1 +1,8 @@
 @import 'bootstrap';
+
+th {
+  text-align: center; }
+
+ .table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > th {
+background-color: #34495E;
+}

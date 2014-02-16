@@ -6,7 +6,7 @@ body {
   font-family: 'Lato', Calibri, Arial, sans-serif;
   background: #2C3E50;
   font-weight: 300;
-  font-size: 2em;
+  font-size: 1.8em;
   color: #ECF0F1;
   text-align: center;
 }
@@ -279,7 +279,7 @@ border-radius: 50%;
 .btn {
   border: none;
   font-family: inherit;
-  font-size: inherit;
+  font-size: 0.8em;
   color: inherit;
   background: none;
   cursor: pointer;
@@ -707,6 +707,14 @@ background-color: transparent;
 color: #1ABC9C;
 float: center !important;
 text-align: center !important;
+}
+
+label {
+font-weight: 300;
+color: #BDF271;
+
+html {
+font-family: Lato;
 }
 
 
