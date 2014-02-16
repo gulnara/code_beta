@@ -491,10 +491,10 @@ window.nv.tooltip.* also has various helper methods.
                 }
             });
 
-            var html = table.node().outerHTML;
-            if (d.footer !== undefined)
-                html += "<div class='footer'>" + d.footer + "</div>";
-            return html;
+            // var html = table.node().outerHTML;
+            // if (d.footer !== undefined)
+            //     html += "<div class='footer'>" + d.footer + "</div>";
+            // return html;
 
         };
 

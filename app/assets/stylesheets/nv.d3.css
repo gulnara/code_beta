@@ -127,12 +127,12 @@
   height: 8px;
   vertical-align: middle;
 }
-
+/*
 .nvtooltip .footer {
   padding: 3px;
   text-align: center;
 }
-
+*/
 
 .nvtooltip-pending-removal {
   position: absolute;
