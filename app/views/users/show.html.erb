@@ -1,37 +1,19 @@
-<div id="container" class="container">  
-  <nav id="bt-menu" class="bt-menu">
-    <a href="#" class="bt-menu-trigger"><span>Menu</span></a>
-    <%= render "layouts/header" %>
-  </nav>
-  <div class="menu-panel">
-    <ul id="menu-toc" class="menu-toc">
-    <h2><span>Problems</span></h2>
-    <%= link_to 'CREAT A NEW PROBLEM', new_problem_path %>
-    <table>
-        <thead>
-          <tr>
-          <th>Title</th>
-          </tr>
-        </thead>
-        <tbody>
-        <%if @problem.any? == true%>
-      <%@problem.each do |problem|%>
-      <tr>
-        <%if problem.user_id == @user.id %>
-          <td><%= link_to problem.title, problem %></td>
+<div class="container">
 
-        <% end %>
-      <%end%>
-      <%end%>
-      </tr>
-      </tbody>
-      </table>
-    </ul>
+  <div class="left-sidebar">
+    <h2>Problems</h2>
+    <%= link_to 'CREAT A NEW PROBLEM', new_problem_path %>
+    <h2>Title</h2>
+    <%if @created_problems.any? == true%>
+      <%@created_problems.each do |problem|%>
+        <li><%= link_to problem.title, problem %></li>
+      <% end %>
+    <%end%>
   </div>
-  <div class="side-panel">
-    <ul id="side-toc" class="side-toc">
+
+  <div class="right-sidebar">
     <h2>Solutions</h2>
-      <table>
+    <table>
         <thead>
           <tr>
           <th>Solution To</th>
@@ -52,86 +34,76 @@
           <%end%>
         </tbody>
       </table>
-    </ul>
   </div>
-  <div class="bb-custom-wrapper">
-    <div id="bb-bookblock" class="bb-bookblock">
-      <div class="bb-item" id="item1">
-        <div class="content">
-          <div class="scroller">
-            <div class= "profile">
-            <%= image_tag @user.avatar.url(:thumb) %>
-            </div>
-            <h1><%= @user.name %></h1>
-            <p><%= @user.language %></p>
-            <p><%= link_to "@#{@user.twitter}", "https://twitter.com/#{@user.twitter}" %></p>
-            <p><%= link_to "github", @user.github %></p>
-            <% url = @user.url %>
-            <p><%= link_to "www" , url %></p>
 
-              <div class='analytics'>
-              <%languages = @user.solutions.map{|a| a.language}%>
-              <%counts = Hash.new(0)%>
-              <%languages.each { |name| counts[name] += 1 }%>
-              <% @d_3 = []%>
-              <% counts.each do |key, value| %>
-                <% @d_3 << {"label" => key + " "+value.to_s, "value"=> value.to_s}%>
-              <%end %> 
-              <%@j_data = @d_3%>
-              <h2>your stats</h2>
+  <div class="content">
 
-              <svg id="test1" class="mypiechart"></svg>
-              <svg id="test2" class="mypiechart"></svg>
-              <svg id="test3" class="mypiechart"></svg>
+    <span class="left-button"><%= image_tag('flask.png', :size=>'50x50') %></span>
+    <span class="right-button"><%= image_tag('bulb.png', :size=>'50x50') %></span>
 
-              
-<ul>
-  <% for friendship in @user.friendships %>
-  <% if friendship.friend.name != nil%>
-  <h2>following</h2>
-    <li>
-      <%=h friendship.friend.name %>
-      (<%= link_to "remove", friendship, :method => :delete %>)
-    </li>
-  <% end %>
-  <% end %>
-</ul>
-</br>
-
-<!-- <p><%= link_to "followers", users_path %></p> -->
-
-<ul>
-  <% for user in @user.inverse_friends %>
-    <% if user.name != nil%>
-    <h2>followers</h2>
-    <li><%= user.name %></li>
-    <% end %>
-  <% end %>
-</ul>
-</br>
+    <span class="profile"><%= image_tag @user.avatar.url(:thumb) %><span>
+    <h1><%= @user.name %></h1>
+    <p><%= @user.language %></p>
+    <p><%= link_to "@#{@user.twitter}", "https://twitter.com/#{@user.twitter}" %></p>
+    <p><%= link_to "github", @user.github %></p>
+    <% url = @user.url %>
+    <p><%= link_to "www" , url %></p>
 
 
+      <%languages = @user.solutions.map{|a| a.language}%>
+      <%counts = Hash.new(0)%>
+      <%languages.each { |name| counts[name] += 1 }%>
+      <% @d_3 = []%>
+      <% counts.each do |key, value| %>
+        <% @d_3 << {"label" => key + " "+value.to_s, "value"=> value.to_s}%>
+      <%end %> 
+      <span class = 'nav_menu'>
+      <% if @user == current_user %>
+        <li class = "icons"><%= link_to(image_tag('tools2.png', :size=>'30x30'), edit_user_registration_path)  %></li>
 
+        <li class = "icons"><%= link_to(image_tag('logout.png', :size=>'30x30'), destroy_user_session_path, method: :delete)  %></li>
+     <% end %>
+   </span>
+      <h2>your stats</h2>
 
-            </div>
+      <svg id="test1" class="mypiechart"></svg>
+      <svg id="test2" class="mypiechart"></svg>
+      <svg id="test3" class="mypiechart"></svg>
+      <ul>
+        <% for friendship in @user.friendships %>
+        <% if friendship.friend.name != nil%>
+        <h2>following</h2>
+          <li>
+            <%= image_tag friendship.friend.avatar.url(:thumb) %>
+            <%= link_to friendship.friend.name, user_path(friendship.friend) %>
+            <%= link_to(image_tag('trash.png', :size=>'30x30'), friendship, :method => :delete) %>
+          </li>
+        <% end %>
+        <% end %>
+      </ul>
+      </br>
 
-            <%= render "layouts/user_dashboard" %>
-          </div>
-        </div>
-      </div>
-    </div>
-    <span id="tblcontents" class="menu-button">
-      <%= image_tag('flask.png', :size=>'50x50') %>
-    </span>
-    <span id="sidecontents" class="side-button">
-      <%= image_tag('bulb.png', :size=>'50x50') %>
-    </span>
+      <ul>
+        <% for user in @user.inverse_friends %>
+          <% if user.name != nil%>
+          <h2>followers</h2>
+          <li>
+            <%= image_tag user.avatar.url(:thumb) %>
+            <%= link_to user.name, user_path(user) %>
+          </li>
+          <% end %>
+        <% end %>
+      </ul>
+      </br>
+
+    <%= render "layouts/user_dashboard" %>
   </div>
-</div><!-- /container -->
+</div>
+</div>
 
+</div>
 <script>
 
-              //Regular pie chart example
 nv.addGraph(function() {
     var width = 300,
         height = 300;
@@ -155,15 +127,16 @@ nv.addGraph(function() {
 
     return chart;
 });
+
 nv.addGraph(function() {
-    var width = 300,
-        height = 300;
+    var width = 350,
+        height = 350;
 
     var chart = nv.models.pieChart()
         .x(function(d) { return d.label })
         .y(function(d) { return d.value })
-        .showLabels(false)
         .color(['#6395FF', '#29D9C2'])
+        .showLabels(false)
         .width(width)
         .height(height);
 
@@ -178,6 +151,7 @@ nv.addGraph(function() {
 
     return chart;
 });
+
 nv.addGraph(function() {
     var width = 300,
         height = 300;
@@ -238,6 +212,8 @@ var y_solution = <%= @user.solutions.count.to_json %>;
       } 
 ]
 
-var some_data = <%= raw @j_data.to_json.chomp('"').reverse.chomp('"').reverse %>;
+var some_data = <%= raw @d_3.to_json.chomp('"').reverse.chomp('"').reverse %>;
 
 </script>
+
+

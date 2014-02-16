@@ -1,4 +1,4 @@
-
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
 /********************
  * HTML CSS
  */
@@ -29,16 +29,16 @@
 
 .nvtooltip {
   position: absolute;
-  background-color: rgba(255,255,255,1.0);
+  background-color: #ECF0F1;
   padding: 1px;
   border: 1px solid rgba(0,0,0,.2);
   z-index: 10000;
 
-  font-family: Arial;
+  font-family: Lato;
   font-size: 13px;
   text-align: left;
   pointer-events: none;
-  colot: #ECF0F1;
+  color: #34495E;
 
   white-space: nowrap;
 
@@ -87,7 +87,7 @@
   margin: 0;
   padding: 5px 14px;
   text-align: center;
-  color: #ECF0F1;
+  color: #34495E;
 }
 
 .nvtooltip span {
@@ -153,15 +153,19 @@ svg {
   -ms-user-select: none;
   user-select: none;
   /* Trying to get SVG to act like a greedy block in all browsers */
-  display: block;
-  width:100%;
-  height:100%;
+  /*display: block;*/
+
 }
 
 
 svg text {
-  font: normal 12px Arial;
+  font-family: 'Lato', Calibri, Arial, sans-serif;
+  font: 4px;
+  fill: #ECF0F1;
+
+
 }
+
 
 svg .title {
  font: bold 14px Arial;
@@ -206,48 +210,6 @@ svg .title {
 
 
 
-/**********
-*  Axes
-*/
-.nvd3 .nv-axis {
-  pointer-events:none;
-}
-
-.nvd3 .nv-axis path {
-  fill: none;
-  stroke: #000;
-  stroke-opacity: .75;
-  shape-rendering: crispEdges;
-}
-
-.nvd3 .nv-axis path.domain {
-  stroke-opacity: .75;
-}
-
-.nvd3 .nv-axis.nv-x path.domain {
-  stroke-opacity: 0;
-}
-
-.nvd3 .nv-axis line {
-  fill: none;
-  stroke: #e5e5e5;
-  shape-rendering: crispEdges;
-}
-
-.nvd3 .nv-axis .zero line,
-/*this selector may not be necessary*/ .nvd3 .nv-axis line.zero {
-  stroke-opacity: .75;
-}
-
-.nvd3 .nv-axis .nv-axisMaxMin text {
-  font-weight: bold;
-}
-
-.nvd3 .x  .nv-axis .nv-axisMaxMin text,
-.nvd3 .x2 .nv-axis .nv-axisMaxMin text,
-.nvd3 .x3 .nv-axis .nv-axisMaxMin text {
-  text-anchor: middle
-}
 
 
 
@@ -262,66 +224,8 @@ svg .title {
 
 
 
-/**********
-*  Bars
-*/
-
-.nvd3 .nv-bars .negative rect {
-    zfill: brown;
-}
-
-.nvd3 .nv-bars rect {
-  zfill: steelblue;
-  fill-opacity: .75;
-
-  transition: fill-opacity 250ms linear;
-  -moz-transition: fill-opacity 250ms linear;
-  -webkit-transition: fill-opacity 250ms linear;
-}
-
-.nvd3 .nv-bars rect.hover {
-  fill-opacity: 1;
-}
-
-.nvd3 .nv-bars .hover rect {
-  fill: lightblue;
-}
-
-.nvd3 .nv-bars text {
-  fill: rgba(0,0,0,0);
-}
-
-.nvd3 .nv-bars .hover text {
-  fill: rgba(0,0,0,1);
-}
 
 
-/**********
-*  Bars
-*/
-
-.nvd3 .nv-multibar .nv-groups rect,
-.nvd3 .nv-multibarHorizontal .nv-groups rect,
-.nvd3 .nv-discretebar .nv-groups rect {
-  stroke-opacity: 0;
-
-  transition: fill-opacity 250ms linear;
-  -moz-transition: fill-opacity 250ms linear;
-  -webkit-transition: fill-opacity 250ms linear;
-}
-
-.nvd3 .nv-multibar .nv-groups rect:hover,
-.nvd3 .nv-multibarHorizontal .nv-groups rect:hover,
-.nvd3 .nv-discretebar .nv-groups rect:hover {
-  fill-opacity: 1;
-}
-
-.nvd3 .nv-discretebar .nv-groups text,
-.nvd3 .nv-multibarHorizontal .nv-groups text {
-  font-weight: bold;
-  fill: #ECF0F1;
-  stroke: #ECF0F1;
-}
 
 /***********
 *  Pie Chart
@@ -336,7 +240,7 @@ svg .title {
 }
 
 .nvd3.nv-pie .nv-slice text {
-  fill-color: #ECF0F1;
+  fill-color: #000;
   stroke-width: 0;
 }
 
@@ -351,11 +255,12 @@ svg .title {
 
 }
 .nvd3.nv-pie .nv-label {
-  fill: #ECF0F1;
+  fill: #000;
   pointer-events: none;
 }
 .nvd3.nv-pie .nv-label rect {
   fill-opacity: 0;
+  fill: #000;
   stroke-opacity: 0;
 }
 

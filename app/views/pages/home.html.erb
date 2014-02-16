@@ -1,37 +1,23 @@
-<div id="container" class="container">  
-	<nav id="bt-menu" class="bt-menu">
-		<a href="#" class="bt-menu-trigger"><span>Menu</span></a>
-		<%= render "layouts/header" %>
-	</nav>
-	<div class="bb-custom-wrapper">
-		<div id="bb-bookblock" class="bb-bookblock">
-			<div class="bb-item" id="item1">
-				<div class="content">
-					<div class="scroller">
-						<h1>Welcome to CodeBeta !</h1>
-							<div class="analytics">
 
-								<%languages = @solutions.map{|a| a.language}%>
-									<%counts = Hash.new(0)%>
-									<%languages.each { |name| counts[name] += 1 }%>
-              <% @d_3 = []%>
-              <% counts.each do |key, value| %>
-                <% @d_3 << {"label" =>  key + " "+value.to_s, "value"=> value.to_s}%>
-              <%end %> 
-              <%@j_data = @d_3%>
-								 
-
-								 	 <svg id="test1" class="mypiechart"></svg>
-              <svg id="test2" class="mypiechart"></svg>
-              <svg id="test3" class="mypiechart"></svg>
-							</div>
-              <%= render "layouts/info_feed" %>
-    			</div>
-				</div>
-			</div>
-		</div>
-	</div>  
-</div>
+  <div class="container">
+    <div class="content">
+      <h1>Welcome to CodeBeta !</h1>
+        <div class="analytics">
+          <%languages = @solutions.map{|a| a.language}%>
+          <%counts = Hash.new(0)%>
+          <%languages.each { |name| counts[name] += 1 }%>
+          <% @d_3 = []%>
+          <% counts.each do |key, value| %>
+            <% @d_3 << {"label" =>  key + " "+value.to_s, "value"=> value.to_s}%>
+          <%end %> 
+          <%@j_data = @d_3%>
+          <svg id="test1" class="mypiechart"></svg>
+          <svg id="test2" class="mypiechart"></svg>
+          <svg id="test3" class="mypiechart"></svg>
+        </div>
+      <%= render "layouts/info_feed" %>
+    </div>
+  </div>
 <script>
 
               //Regular pie chart example
@@ -144,3 +130,4 @@ var y_solution = <%= @solutions.count.to_json %>;
 var some_data = <%= raw @j_data.to_json.chomp('"').reverse.chomp('"').reverse %>;
 
 </script>
+
