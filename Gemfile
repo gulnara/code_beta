@@ -52,3 +52,5 @@ gem "nifty-generators", :group => :development
 gem 'public_activity'
 
 gem "mocha", group: :test
+
+gem 'bootstrap-sass'
