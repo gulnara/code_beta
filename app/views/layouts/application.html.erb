@@ -13,32 +13,9 @@
 
 </head>
 <body>
-
+<%= render "layouts/header" %>
 
     <%= yield %>
 
-  <div class="footer-menu">
-
-    <div class="closed">
-      <ul>
-        <li class="toggle-footer-menu"><%= image_tag('menu2.png', :size=>'30x30')  %></li>
-      </ul>
-    </div>
-
-    <div class="open">
-      <ul>
-        <li class = "icons"><%= link_to(image_tag('rocket.png', :size=>'30x30'), root_path) %></li>
-        <% if user_signed_in? %>
-          <li class = "icons"><%= link_to(image_tag('flask.png', :size=>'30x30'), problems_path) %></li>
-          <li class = "icons"><%= link_to(image_tag('geek.png', :size=>'30x30'), current_user) %></li>
-
-        <% else %>
-          <li class = "icons"><%= link_to(image_tag('login.png', :size=>'30x30'), new_user_session_path)  %></li>
-        <% end %>
-        <li class="toggle-footer-menu"><%= image_tag('menu.png', :size=>'30x30')  %></li>
-      </ul>
-    </div>
-
-  </div>
 </body>
 </html>

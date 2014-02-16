@@ -38,9 +38,9 @@
 
   <div class="content">
 
-    <span class="left-button"><%= image_tag('flask.png', :size=>'50x50') %></span>
-    <span class="right-button"><%= image_tag('bulb.png', :size=>'50x50') %></span>
-
+    <div class="left-button"><%= image_tag('flask.png', :size=>'50x50') %></div>
+    <div class="right-button"><%= image_tag('bulb.png', :size=>'50x50') %></div>
+    <div class = "small">
     <span class="profile"><%= image_tag @user.avatar.url(:thumb) %><span>
     <h1><%= @user.name %></h1>
     <p><%= @user.language %></p>
@@ -57,13 +57,6 @@
       <% counts.each do |key, value| %>
         <% @d_3 << {"label" => key + " "+value.to_s, "value"=> value.to_s}%>
       <%end %> 
-      <span class = 'nav_menu'>
-      <% if @user == current_user %>
-        <li class = "icons"><%= link_to(image_tag('tools2.png', :size=>'30x30'), edit_user_registration_path)  %></li>
-
-        <li class = "icons"><%= link_to(image_tag('logout.png', :size=>'30x30'), destroy_user_session_path, method: :delete)  %></li>
-     <% end %>
-   </span>
       <h2>your stats</h2>
 
       <svg id="test1" class="mypiechart"></svg>
@@ -98,6 +91,7 @@
 
     <%= render "layouts/user_dashboard" %>
   </div>
+</div>
 </div>
 </div>
 
