@@ -16,6 +16,7 @@
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav navbar-right">
          <li class = "icons"><%= link_to 'CodeBeta', root_path %></li>
+         <li class = "icons"><%= link_to 'About', about_path %></li>
         <% if user_signed_in? %>
           <li class = "icons"><%= link_to 'Problems', problems_path %></li>
           <li class = "icons"><%= link_to 'Profile', current_user %></li>

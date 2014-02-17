@@ -140,9 +140,9 @@ border-radius: 50%;
 .content h2 {
   font-family: 'Lato', Calibri, Arial, sans-serif;
   font-weight: 300;
-  font-size: 2em;
-  color: #ECF0F1;
-  padding-bottom: 20px;
+  font-size: 1.3em;
+  color: #BDF271;
+  /*padding-bottom: 20px;*/
 }
 
 /* Content when left sidebar is active */

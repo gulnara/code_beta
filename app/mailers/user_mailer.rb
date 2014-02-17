@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "gmirzaka@gmail.com"
+  default from: "CodeBeta <codebeta3@gmail.com>"
 
   def email_problems(user, problem) 
     @user = user
