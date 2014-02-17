@@ -8,7 +8,7 @@ require 'rufus/scheduler'
 
 scheduler = Rufus::Scheduler.new
 
-scheduler.every('5m') do
+scheduler.every('24h') do
 	puts "Emailing problems"
 	UsersController.send_problems_to_users
 end
