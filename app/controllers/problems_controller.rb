@@ -9,7 +9,7 @@ class ProblemsController < ApplicationController
 
 
   def index
-    @problems = Problem.order(sort_column + " " + sort_direction)
+    @problems = Problem.order(sort_column + " " + sort_direction).paginate(:page => params[:page], :per_page => 20)
   end
 
   def show

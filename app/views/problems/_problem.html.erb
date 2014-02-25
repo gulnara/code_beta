@@ -1,0 +1,15 @@
+
+
+<tr>
+  <td ><%= link_to problem.title, problem %></td>
+  <td  ><%= problem.solutions_number %></td>
+  <%if problem.source_title == nil%>
+
+    <td ><%= problem.source_title = "Project Euler" %></td>
+  <%else%>
+    <td ><%= problem.source_title %></td>
+  <%end%>
+  <td ><%= problem.created_at.strftime("%B %e, %Y") %></td>
+</tr>
+
+

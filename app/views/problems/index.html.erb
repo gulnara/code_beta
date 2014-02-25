@@ -1,35 +1,28 @@
 
-  <div class="content">
-    <h1>All Problems</h1>
+<div class="content">
+  <h1>All Problems</h1>
 
-    <%= link_to 'New Problem', new_problem_path, class: "btn btn-6 btn-6c" %>
-
+  <%= link_to 'New Problem', new_problem_path, class: "btn btn-6 btn-6c" %>
+  <div id="problems">
     <table class="table-striped">
-    
-        <tr>
-          <th ><%= sortable 'title' %></th>
-          <th ><%= sortable 'solutions_number', 'Solutions' %></th>
-          <th ><%= sortable 'source_title', 'Source' %></th>
-          <th ><%= sortable 'created_at', 'Created' %></th>
-          <th></th>
-          <th></th>
-          <th></th>
-        </tr>
-
-      <% @problems.each do |problem| %>
-
-        <tr>
-          <td ><%= link_to problem.title, problem %></td>
-          <td  ><%= problem.solutions_number %></td>
-          <%if problem.source_title == nil%>
-
-            <td ><%= problem.source_title = "Project Euler" %></td>
-          <%else%>
-            <td ><%= problem.source_title %></td>
-          <%end%>
-          <td ><%= problem.created_at.strftime("%B %e, %Y") %></td>
-        </tr>
-      <% end %>
-
+  
+      <tr>
+        <th ><%= sortable 'title' %></th>
+        <th ><%= sortable 'solutions_number', 'Solutions' %></th>
+        <th ><%= sortable 'source_title', 'Source' %></th>
+        <th ><%= sortable 'created_at', 'Created' %></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>  
+      <div class="problem">
+      <%= render @problems %>
+      </div>
     </table>
   </div>
+
+<div class="center">
+ <%= will_paginate @problems  %>
+</div>
+
+</div>
