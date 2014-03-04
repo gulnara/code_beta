@@ -1,4 +1,6 @@
 CodeBeta::Application.routes.draw do
+
+
   
   resources :friendships
 
@@ -18,6 +20,6 @@ CodeBeta::Application.routes.draw do
 
   get "users/show"
 
-  root "pages#home"
+  root "problems#index"
 
 end

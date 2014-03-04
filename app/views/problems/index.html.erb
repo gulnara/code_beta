@@ -3,26 +3,25 @@
   <h1>All Problems</h1>
 
   <%= link_to 'New Problem', new_problem_path, class: "btn btn-6 btn-6c" %>
-  <div id="problems">
-    <table class="table-striped">
-  
-      <tr>
-        <th ><%= sortable 'title' %></th>
-        <th ><%= sortable 'solutions_number', 'Solutions' %></th>
-        <th ><%= sortable 'source_title', 'Source' %></th>
-        <th ><%= sortable 'created_at', 'Created' %></th>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>  
-      <div class="problem">
-      <%= render @problems %>
-      </div>
-    </table>
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#">Newest</a></li>
+  <li><a href="#">Solved</a></li>
+  <li><a href="#">Popular</a></li>
+</ul>
+  <div class="list-group">
+<% @problems.each do |problem|%>
+ <div class= "list-group-item">
+    <h4 class="list-group-item-heading"><%=link_to problem.title, problem%> <span class="badge pull-right"><%= problem.created_at.strftime("%B %e, %Y") %></span><span class="badge"><%= problem.solutions_number %></span></h4>
+    <p class="list-group-item-text"><%=h truncate(problem.description, :length => 140) %></p>
+ </div>
+<%end%>
   </div>
 
-<div class="center">
- <%= will_paginate @problems  %>
-</div>
+  
+
+<ul class="pagination">
+ <li><%= will_paginate @problems  %></li>
+</ul>
 
 </div>
+
