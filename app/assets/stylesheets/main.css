@@ -33,9 +33,9 @@
   border: 2px dashed #1ABC9C;
   border-radius: 15px;
   background: #1ABC9C;
-  padding: 20px 60px;
+  padding: 20px 40px;
   color: #2C3E50;
-  margin: 10px;
+  margin: 5px;
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   transition: all 0.3s;
@@ -117,4 +117,14 @@ i {
 .btn-6l:hover {
   background: transparent;
   color: #BDF271;
+}
+
+.form-signin {
+max-width: 330px;
+padding: 15px;
+margin: 0 auto;
+}
+
+.devise {
+  text-align: center;
 }
