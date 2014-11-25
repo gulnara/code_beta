@@ -34,12 +34,14 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.2)
     atomic (1.1.14)
+    autoprefixer-rails (4.0.1)
+      execjs
     aws-sdk (1.20.0)
       json (~> 1.4)
       nokogiri (>= 1.4.4, < 1.6.0)
       uuidtools (~> 2.1)
     bcrypt-ruby (3.1.2)
-    bootstrap-sass (3.0.3.0)
+    bootstrap-sass (3.3.1.0)
       sass (~> 3.2)
     builder (3.1.4)
     chronic (0.10.2)
@@ -174,8 +176,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  autoprefixer-rails
   aws-sdk (~> 1.20.0)
-  bootstrap-sass
+  bootstrap-sass (~> 3.3.1)
   clockwork
   coffee-rails (~> 4.0.0)
   d3_rails
@@ -192,7 +195,7 @@ DEPENDENCIES
   rails_12factor
   redcarpet
   rufus-scheduler
-  sass-rails (~> 4.0.0)
+  sass-rails (>= 3.2)
   sdoc
   sqlite3
   turbolinks
