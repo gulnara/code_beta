@@ -4,12 +4,8 @@ class ProblemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :who_are_you, only: [:edit, :update, :destroy]
 
-
-
-
-
   def index
-    @problems = Problem.order(sort_column + " " + sort_direction)
+    @problems = Problem.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
   end
 
   def show
@@ -19,7 +15,6 @@ class ProblemsController < ApplicationController
     @problem = current_user.problems.new
 
   end
-
 
   def edit
 
