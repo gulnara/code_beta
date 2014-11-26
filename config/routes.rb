@@ -27,6 +27,8 @@ CodeBeta::Application.routes.draw do
 
   get "unanswered" => "problems#unanswered"
 
+  get 'tags/:tag', to: 'articles#index', as: :tag
+
   # get 'users/:id' => 'users#show', as: :user
   # match 'users/:id' => 'users#show', via: [:get], :as => :user
 

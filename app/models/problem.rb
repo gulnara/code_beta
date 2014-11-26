@@ -11,4 +11,7 @@ class Problem < ActiveRecord::Base
 	validates :description, presence: true
 	validates :title, presence: true
 	validates :source_title, presence: true
+	acts_as_taggable
+
+	
 end

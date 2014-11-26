@@ -2,6 +2,7 @@ class ProblemsController < ApplicationController
   helper_method :sort_column, :sort_direction
   before_action :set_problem, only: [:show, :edit, :update, :destroy]
   # before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, only: [:new]
   before_action :who_are_you, only: [:edit, :update, :destroy]
 
   def index
@@ -32,6 +33,7 @@ class ProblemsController < ApplicationController
     if @problem.save
       redirect_to @problem, notice: 'Problem was successfully created.' 
     else
+      @problem.errors.full_messages
       render action: 'new' 
     end
   end
@@ -90,6 +92,6 @@ class ProblemsController < ApplicationController
 
  
     def problem_params
-      params.require(:problem).permit(:description, :title, :source, :source_title, :user_id, :solutions_number)
+      params.require(:problem).permit(:description, :title, :source, :source_title, :user_id, :solutions_number, :tag_list)
     end
 end

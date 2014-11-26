@@ -38,3 +38,5 @@ gem 'sass-rails', '>= 3.2'
 gem 'autoprefixer-rails'
 gem 'will_paginate', '~> 3.0.5'
 gem 'will_paginate-bootstrap'
+gem 'acts-as-taggable-on', '~> 3.4'
+
