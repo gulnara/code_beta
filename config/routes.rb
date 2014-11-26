@@ -1,13 +1,13 @@
 CodeBeta::Application.routes.draw do
   
-  
-
   resources :friendships
 
   resources :activities
 
   resources :problems do
-    resources :solutions
+    resources :solutions do
+      member { post :vote }
+    end
     member { post :vote }
   end
 

@@ -70,6 +70,13 @@ class SolutionsController < ApplicationController
     redirect_to problem_path(@problem) 
   end
 
+  def vote
+    value = params[:type] == "up" ? 1 : -1
+    @solution = Solution.find(params[:id])
+    @solution.add_or_update_evaluation(:votes, value, current_user)
+    redirect_to :back, notice: "Thank you for voting"
+  end
+
   private
    
     def set_solution
