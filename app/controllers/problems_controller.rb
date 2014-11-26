@@ -1,7 +1,7 @@
 class ProblemsController < ApplicationController
   helper_method :sort_column, :sort_direction
   before_action :set_problem, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
+  # before_action :authenticate_user!, except: [:index, :show]
   before_action :who_are_you, only: [:edit, :update, :destroy]
 
   def index
@@ -20,6 +20,9 @@ class ProblemsController < ApplicationController
 
   end
 
+  def unanswered
+    @problems = Problem.where("problems.solutions_number IS 0").order("created_at DESC").paginate(:page => params[:page], :per_page => 10) 
+  end
 
 
   def create

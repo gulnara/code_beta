@@ -25,6 +25,8 @@ CodeBeta::Application.routes.draw do
 
   get "solutions" => "solutions#solutions"
 
+  get "unanswered" => "problems#unanswered"
+
   # get 'users/:id' => 'users#show', as: :user
   # match 'users/:id' => 'users#show', via: [:get], :as => :user
 

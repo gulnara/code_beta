@@ -1,0 +1,67 @@
+<div class="container-fluid">
+  <div class="row">
+  <%= render "layouts/side_nav" %>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <h1 class="page-header">Unanswered Problems</h1>
+      <%= link_to 'New Problem', new_problem_path, class: "btn btn-6 btn-6c" %>
+      <div class="row placeholders">
+        <div class="col-xs-6 col-sm-3 placeholder">
+          <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
+          <h4>Label</h4>
+          <span class="text-muted">Something else</span>
+        </div>
+        <div class="col-xs-6 col-sm-3 placeholder">
+          <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
+          <h4>Label</h4>
+          <span class="text-muted">Something else</span>
+        </div>
+        <div class="col-xs-6 col-sm-3 placeholder">
+          <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
+          <h4>Label</h4>
+          <span class="text-muted">Something else</span>
+        </div>
+        <div class="col-xs-6 col-sm-3 placeholder">
+          <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
+          <h4>Label</h4>
+          <span class="text-muted">Something else</span>
+        </div>
+      </div>
+
+      <!-- <h2 class="sub-header">All Problems</h2> -->
+      
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th ><%= sortable 'title' %></th>
+              <th ><%= sortable 'solutions_number', 'Solutions' %></th>
+              <th ><%= sortable 'source_title', 'Source' %></th>
+              <th ><%= sortable 'created_at', 'Created' %></th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+          <% @problems.each do |problem| %>
+            <tr>
+              <td ><%= link_to problem.title, problem %></td>
+              <td  ><%= problem.solutions_number %></td>
+              <%if problem.source_title == nil%>
+
+                <td ><%= problem.source_title = "Project Euler" %></td>
+              <%else%>
+                <td ><%= problem.source_title %></td>
+              <%end%>
+              <td ><%= problem.created_at.strftime("%B %e, %Y") %></td>
+            </tr>
+          <% end %>
+          <div class="center">
+             <%= will_paginate @problems, renderer: BootstrapPagination::Rails %>
+          </div>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
