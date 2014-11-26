@@ -1,30 +1,33 @@
-<%= form_for(@problem) do |f| %>
-  <% if @problem.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@problem.errors.count, "error") %> prohibited this problem from being saved:</h2>
+<form role="form">
+  <%= form_for(@problem) do |f| %>
+    <% if @problem.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@problem.errors.count, "error") %> prohibited this problem from being saved:</h2>
 
-      <ul>
-      <% @problem.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @problem.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :title %><br>
+      <%= f.text_field :title , class: "form-control" %>
+      </div>
+      
+      <%= f.label :description %><br>
+      <%= f.text_area :description , rows: 20, class: "form-control" %>
+      <div class="form-group">
+      <%= f.label :source_title %><br>
+      <%= f.text_field :source_title , class: "form-control" %>
+      <%= f.label :source %><br>
+      <%= f.text_field :source , class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "Submit", class: "btn btn-primary" %>
+      <%= link_to 'Back to Problems', problems_path, class: "btn btn-default" %>
     </div>
   <% end %>
-
-  <div class="form-group">
-    <%= f.label :title %><br>
-    <%= f.text_field :title , class: "form-control" %>
-    </div>
-    
-    <%= f.label :description %><br>
-    <%= f.text_area :description , rows: 20, class: "text_area"%>
-    <div class="form-group">
-    <%= f.label :source_title %><br>
-    <%= f.text_field :source_title , class: "form-control" %>
-    <%= f.label :source %><br>
-    <%= f.text_field :source , class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.submit "Submit", class: "btn btn-6 btn-6c" %>
-  </div>
-<% end %>
+</form>

@@ -2,15 +2,14 @@
   <div class="row">
     <div class="col-sm-3 col-md-2 sidebar">
       <ul class="nav nav-sidebar">
-        <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Reports</a></li>
-        <li><a href="#">Analytics</a></li>
-        <li><a href="#">Export</a></li>
+        <li class="active"><a href="#">Problems <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Solutions</a></li>
+        <li><a href="#">Users</a></li>
       </ul>
       <ul class="nav nav-sidebar">
-        <li><a href="">Nav item</a></li>
-        <li><a href="">Nav item again</a></li>
-        <li><a href="">One more nav</a></li>
+        <li><a href="">Tags</a></li>
+        <li><a href="">Unanswered</a></li>
+        <li><a href="">Most Popular</a></li>
         <li><a href="">Another nav item</a></li>
         <li><a href="">More navigation</a></li>
       </ul>
@@ -21,8 +20,8 @@
       </ul>
     </div>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-      <h1 class="page-header">Dashboard</h1>
-
+      <h1 class="page-header">All Problems</h1>
+      <%= link_to 'New Problem', new_problem_path, class: "btn btn-6 btn-6c" %>
       <div class="row placeholders">
         <div class="col-xs-6 col-sm-3 placeholder">
           <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
@@ -46,8 +45,8 @@
         </div>
       </div>
 
-      <h2 class="sub-header">All Problems</h2>
-      <%= link_to 'New Problem', new_problem_path, class: "btn btn-6 btn-6c" %>
+      <!-- <h2 class="sub-header">All Problems</h2> -->
+      
       <div class="table-responsive">
         <table class="table table-striped">
           <thead>

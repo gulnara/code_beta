@@ -1,17 +1,15 @@
-
-	<div class="content">
-		<h2 >solution to : <%= link_to @problem.title, @problem %></h2>
-		<h2 > <%= @solution.title %> </h2>
-		<h2>in : <%= @solution.language %></h2>
-		<div class = "problem_description"> <%= raw Pygments.highlight(@solution.answer, lexer: @solution.language) %>
-		</div>
-		<br>
-		<% if current_user.try(:admin?) or @solution.user == current_user %>
-			<%= link_to 'Edit', edit_problem_solution_path(@problem, @solution) %>
-			<%= link_to 'Destroy', problem_solution_path(@problem, @solution), method: :delete, data: { confirm: 'Are you sure?' } %> 
-		<% end %>
-		<%= link_to 'Back', problem_path(@problem),  class: "btn btn-6 btn-6k" %>
-		<%= render 'layouts/disqus' %>
+<div class="container">
+	<h2 >solution to : <%= link_to @problem.title, @problem %></h2>
+	<h2 > <%= @solution.title %> </h2>
+	<h2>in : <%= @solution.language %></h2>
+	<div class = "problem_description"> <%= raw Pygments.highlight(@solution.answer, lexer: @solution.language) %>
 	</div>
+	<br>
+	<% if current_user.try(:admin?) or @solution.user == current_user %>
+		<%= link_to 'Edit', edit_problem_solution_path(@problem, @solution), class: "btn btn-warning" %>
+		<%= link_to 'Destroy', problem_solution_path(@problem, @solution), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %> 
+	<% end %>
+	<%= link_to 'Back', problem_path(@problem),  class: "btn btn-default" %>
+</div>
 
 

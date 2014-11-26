@@ -1,56 +1,43 @@
-
-	<div class="content">
-		<div class = "generic">
-		  <h2 > <%= @problem.title %></h2>
-		</div>
-	  <div class = "problem_description"> <%= markdown @problem.description %>
-	  </div>			
-		<div class = "generic">
-		  <h2 > Source: <%= @problem.source_title %></h2>
-		</div>
-
-		<p>
-		  <%= link_to @problem.source, @problem.source %>
-		</p>
-<br>
-		<% if user_signed_in? %>
-		
-			<%= link_to 'Submit a Solution', new_problem_solution_path(@problem), class: "btn btn-6 btn-6c" %> 
-		
-			<% if current_user.try(:admin?) or @problem.user_id == current_user.id  %>
-				<%= link_to 'Edit', edit_problem_path(@problem) %> |
-				<%= link_to 'Delete', @problem, method: :delete, data: { confirm: 'Are you sure?' } %> |
-			<% end %>
+<div class="container">
+	<h3> <%= @problem.title %></h2>
+	<%= markdown @problem.description %>
+	<h5> Source: <%= @problem.source_title %></h5>
+	<p>
+		<%= link_to @problem.source, @problem.source %>
+	</p>
+	<br>
+	<% if user_signed_in? %>
+	<%= link_to 'Submit a Solution', new_problem_solution_path(@problem), class: "btn btn-primary"%> 
+		<% if current_user.try(:admin?) or @problem.user_id == current_user.id  %>
+			<%= link_to 'Edit', edit_problem_path(@problem), class: "btn btn-warning" %> 
+			<%= link_to 'Delete', @problem, class: 'btn btn-danger',  method: :delete, data: { confirm: 'Are you sure?' } %> 
 		<% end %>
-		<%= link_to 'Back', problems_path, class: "btn btn-6 btn-6k" %>
-		<br>
-		<% if user_signed_in? %>
-		<div class = "generic">
-		  <h2>Solutions</h2>
-		</div>
-		  <table class="table">
-		
-			    <tr>
-			      <th>Title</th>
-			      <th>Language</th>
-			      <th>Sybmited by</th>
-			    </tr>
-		
-			
-			    <% @problem.solutions.each do |solution| %>
-			      <tr>
-			        <td ><%= link_to "#{solution.title}" , problem_solution_path(@problem, solution)  %></td>
-			       	<td ><%=  solution.language %></td>
-			        <td ><%= link_to solution.user.name,  user_path(solution.user.id) %></td>
-				    <% end %>
-			      </tr>
-			        <% else %>
-			        <div class = "generic">
-			        <h2>You need to be signed in to see solutions.</h2>
-			    </div>
-			    <% end %>
-			 </table>
-		<%= render 'layouts/disqus' %>
-	</div>
+	<% end %>
+	<%= link_to 'Back', problems_path, class: "btn btn-default" %>
+	<br>
+	<% if user_signed_in? %>
+	<br>
+	<h4>Solutions</h4>
+	  <table class="table">
+			<tr>
+			  <th>Title</th>
+			  <th>Language</th>
+			  <th>Sybmited by</th>
+			</tr>
+			<% @problem.solutions.each do |solution| %>
+			  <tr>
+			    <td ><%= link_to "#{solution.title}" , problem_solution_path(@problem, solution)  %></td>
+			   	<td ><%=  solution.language %></td>
+			    <td ><%= link_to solution.user.name,  user_path(solution.user.id) %></td>
+			  <% end %>
+			  </tr>
+			    <% else %>
+			    <div class = "generic">
+			    <h2>You need to be signed in to see solutions.</h2>
+			</div>
+			<% end %>
+		</table>
+	<%= render 'layouts/disqus' %>
+</div>
 
 			

@@ -1,4 +1,7 @@
-
+html {
+  position: relative;
+  min-height: 100%;
+}
 /*
  * Base structure
  */
@@ -6,6 +9,7 @@
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
   padding-top: 50px;
+  margin-bottom: 60px;
 }
 
 
@@ -103,4 +107,14 @@ body {
 .placeholder img {
   display: inline-block;
   border-radius: 50%;
+}
+
+.footer {
+  position: absolute;
+  text-align: right;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
 }
