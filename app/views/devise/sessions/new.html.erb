@@ -1,5 +1,4 @@
 <div class="container">
-  <form class="form-signin" role="form">
   <h2 class="form-signin-heading">Please sign in</h2>
     <div class="form-group">
     <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
@@ -18,5 +17,4 @@
     <% end %>
   <%= render "devise/shared/links" %>
     </div>
-  </form>
 </div>
