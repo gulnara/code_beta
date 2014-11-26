@@ -1,0 +1,12 @@
+<div class="container-fluid">
+  <div class="row">
+  <%= render "layouts/side_nav" %>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			<div id="tag_cloud">
+			  <% tag_cloud Problem.tag_counts, %w(css1 css2 css3 css4) do |tag, css_class| %>
+			    <%= link_to tag.name, tag_path(tag.name), :class => css_class %>
+			  <% end %>
+			</div>
+		</div>
+	</div>
+</div>

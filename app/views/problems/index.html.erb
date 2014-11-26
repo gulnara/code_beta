@@ -3,38 +3,20 @@
   <%= render "layouts/side_nav" %>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
       <h1 class="page-header">All Problems</h1>
-      <%= link_to 'New Problem', new_problem_path, class: "btn btn-6 btn-6c" %>
-      <div class="row placeholders">
-        <div class="col-xs-6 col-sm-3 placeholder">
-          <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-          <h4>Label</h4>
-          <span class="text-muted">Something else</span>
-        </div>
-        <div class="col-xs-6 col-sm-3 placeholder">
-          <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-          <h4>Label</h4>
-          <span class="text-muted">Something else</span>
-        </div>
-        <div class="col-xs-6 col-sm-3 placeholder">
-          <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-          <h4>Label</h4>
-          <span class="text-muted">Something else</span>
-        </div>
-        <div class="col-xs-6 col-sm-3 placeholder">
-          <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-          <h4>Label</h4>
-          <span class="text-muted">Something else</span>
-        </div>
-      </div>
 
-      <!-- <h2 class="sub-header">All Problems</h2> -->
-      
+      <div id="tag_cloud">
+        <% tag_cloud Problem.tag_counts, %w(css1 css2 css3 css4) do |tag, css_class| %>
+          <%= link_to tag.name, tag_path(tag.name), :class => css_class %>
+        <% end %>
+      </div>
+      <%= link_to 'New Problem', new_problem_path, class: "btn btn-primary" %>
       <div class="table-responsive">
         <table class="table table-striped">
           <thead>
             <tr>
               <th ><%= sortable 'title' %></th>
               <th ><%= sortable 'solutions_number', 'Solutions' %></th>
+              <th >'Tags'</th>
               <th ><%= sortable 'source_title', 'Source' %></th>
               <th ><%= sortable 'created_at', 'Created' %></th>
               <th></th>
@@ -47,6 +29,7 @@
             <tr>
               <td ><%= link_to problem.title, problem %></td>
               <td  ><%= problem.solutions_number %></td>
+              <td  ><%= raw problem.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></td>
               <%if problem.source_title == nil%>
 
                 <td ><%= problem.source_title = "Project Euler" %></td>

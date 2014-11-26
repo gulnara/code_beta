@@ -1,6 +1,9 @@
 <div class="container">
 	<h3> <%= @problem.title %></h2>
 	<%= markdown @problem.description %>
+	<p>
+		Tags: <%= raw @problem.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+	</p>
 	<h5> Source: <%= @problem.source_title %></h5>
 	<p>
 		<%= link_to @problem.source, @problem.source %>
