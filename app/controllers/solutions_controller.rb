@@ -11,6 +11,9 @@ class SolutionsController < ApplicationController
     @problem =  Problem.find(params[id])
   end
 
+  def solutions
+    @solutions = Solution.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+  end
 
   def show
     @solution = Solution.find(params[:id])

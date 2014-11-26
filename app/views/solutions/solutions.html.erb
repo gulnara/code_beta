@@ -1,9 +1,8 @@
 <div class="container-fluid">
   <div class="row">
-  <%= render "layouts/side_nav" %>
+    <%= render "layouts/side_nav" %>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-      <h1 class="page-header">All Problems</h1>
-      <%= link_to 'New Problem', new_problem_path, class: "btn btn-6 btn-6c" %>
+      <h1 class="page-header">All Solutions</h1>
       <div class="row placeholders">
         <div class="col-xs-6 col-sm-3 placeholder">
           <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
@@ -33,31 +32,29 @@
         <table class="table table-striped">
           <thead>
             <tr>
-              <th ><%= sortable 'title' %></th>
-              <th ><%= sortable 'solutions_number', 'Solutions' %></th>
-              <th ><%= sortable 'source_title', 'Source' %></th>
-              <th ><%= sortable 'created_at', 'Created' %></th>
+              <th>Title</th>
+              <th>Answer</th>
+              <th>User</th>
               <th></th>
               <th></th>
               <th></th>
             </tr>
           </thead>
           <tbody>
-          <% @problems.each do |problem| %>
+          <% @solutions.each do |solution| %>
             <tr>
-              <td ><%= link_to problem.title, problem %></td>
-              <td  ><%= problem.solutions_number %></td>
-              <%if problem.source_title == nil%>
-
-                <td ><%= problem.source_title = "Project Euler" %></td>
-              <%else%>
-                <td ><%= problem.source_title %></td>
-              <%end%>
-              <td ><%= problem.created_at.strftime("%B %e, %Y") %></td>
-            </tr>
+            <td><%= solution.title %></td>
+            <td><%= solution.answer %></td>
+            <td><%= solution.user.name if solution.user %></td>
+            <td><%= link_to 'Show', problem_solution_path(solution.problem_id, solution) %></td>
+            <% if current_user.try(:admin?) or solution.user == current_user %>
+              <td><%= link_to 'Edit', edit_problem_solution_path(solution.problem_id, solution) %></td>
+              <td><%= link_to 'Destroy', problem_solution_path(solution.problem_id, solution), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
+          </tr>
           <% end %>
           <div class="center">
-             <%= will_paginate @problems, renderer: BootstrapPagination::Rails %>
+             <%= will_paginate @solutions, renderer: BootstrapPagination::Rails %>
           </div>
           </tbody>
         </table>
