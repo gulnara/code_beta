@@ -18,11 +18,9 @@ class ProblemsController < ApplicationController
 
   def new
     @problem = current_user.problems.new
-
   end
 
   def edit
-
   end
 
   def unanswered
@@ -33,11 +31,9 @@ class ProblemsController < ApplicationController
     end
   end
 
-
   def create
     @problem = current_user.problems.build(problem_params)
     @problem.user_id = current_user.id
-
     if @problem.save
       redirect_to @problem, notice: 'Problem was successfully created.' 
     else
@@ -46,23 +42,25 @@ class ProblemsController < ApplicationController
     end
   end
 
-
   def update
-
     if @problem.update(problem_params)
       redirect_to @problem, notice: 'Problem was successfully updated.' 
     else
       render action: 'edit' 
     end
-
   end
 
 
   def destroy
-
     @problem.destroy
     redirect_to problems_url 
+  end
 
+  def vote
+    value = params[:type] == "up" ? 1 : -1
+    @problem = Problem.find(params[:id])
+    @problem.add_or_update_evaluation(:votes, value, current_user)
+    redirect_to :back, notice: "Thank you for voting"
   end
 
   private

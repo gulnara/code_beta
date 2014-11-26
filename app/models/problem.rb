@@ -12,6 +12,6 @@ class Problem < ActiveRecord::Base
 	validates :title, presence: true
 	validates :source_title, presence: true
 	acts_as_taggable
-
+	has_reputation :votes, source: :user , aggregated_by: :sum
 	
 end

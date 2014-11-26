@@ -8,6 +8,7 @@ CodeBeta::Application.routes.draw do
 
   resources :problems do
     resources :solutions
+    member { post :vote }
   end
 
   devise_for :users

@@ -4,6 +4,11 @@
 	<p>
 		Tags: <%= raw @problem.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
 	</p>
+		
+		 <%= pluralize @problem.reputation_for(:votes).to_i, "vote" %>
+	  | <%= link_to "up", vote_problem_path(@problem, type: "up"), method: "post" %>
+	  | <%= link_to "down", vote_problem_path(@problem, type: "down"), method: "post" %>
+
 	<h5> Source: <%= @problem.source_title %></h5>
 	<p>
 		<%= link_to @problem.source, @problem.source %>

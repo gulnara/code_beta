@@ -26,6 +26,8 @@ GEM
       activesupport (= 4.0.2)
       arel (~> 4.0.0)
     activerecord-deprecated_finders (1.0.3)
+    activerecord-reputation-system (3.0.0)
+      protected_attributes
     activesupport (4.0.2)
       i18n (~> 0.6, >= 0.6.4)
       minitest (~> 4.2)
@@ -100,6 +102,8 @@ GEM
     pg (0.17.1)
     polyglot (0.3.3)
     posix-spawn (0.3.8)
+    protected_attributes (1.0.8)
+      activemodel (>= 4.0.1, < 5.0)
     public_activity (1.4.1)
       actionpack (>= 3.0.0)
       activerecord (>= 3.0)
@@ -181,6 +185,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-reputation-system
   acts-as-taggable-on (~> 3.4)
   autoprefixer-rails
   aws-sdk (~> 1.20.0)
