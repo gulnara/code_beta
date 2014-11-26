@@ -19,9 +19,11 @@ CodeBeta::Application.routes.draw do
   end
 
   get "users/show"
+
+  get "users" => 'users#index'
   # get 'users/:id'
 
-
+  get "solutions" => "solutions#solutions"
 
   # get 'users/:id' => 'users#show', as: :user
   # match 'users/:id' => 'users#show', via: [:get], :as => :user
@@ -30,7 +32,7 @@ CodeBeta::Application.routes.draw do
   
   get "about" => "pages#about" #creates about_path
 
-  root "pages#home"
+  root "problems#index"
 
   
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,7 +1,7 @@
 class SolutionsController < ApplicationController
   before_action :set_solution, only: [:show, :edit, :update, :destroy]
   before_action :are_you_admin_or_creater, only: [:edit, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :solutions, :show]
 
 
 
@@ -11,6 +11,9 @@ class SolutionsController < ApplicationController
     @problem =  Problem.find(params[id])
   end
 
+  def solutions
+    @solutions = Solution.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+  end
 
   def show
     @solution = Solution.find(params[:id])
