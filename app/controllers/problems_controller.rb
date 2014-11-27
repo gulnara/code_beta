@@ -27,10 +27,12 @@ class ProblemsController < ApplicationController
   end
 
   def unanswered
-    if params[:tag]
-      @problems = Problem.where("problems.solutions_number IS 0").tagged_with(params[:tag]).order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+    if params[:query]
+      @problems = Problem.where("problems.solutions_number = 0").text_search(params[:query]).paginate(:page => params[:page], :per_page => 10)
+    elsif params[:tag]
+      @problems = Problem.where("problems.solutions_number = 0").tagged_with(params[:tag]).order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
     else
-      @problems = Problem.where("problems.solutions_number IS 0").order("created_at DESC").paginate(:page => params[:page], :per_page => 10) 
+      @problems = Problem.where("problems.solutions_number = 0").order("created_at DESC").paginate(:page => params[:page], :per_page => 10) 
     end
   end
 
