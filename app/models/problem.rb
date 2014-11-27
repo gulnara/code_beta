@@ -21,7 +21,7 @@ class Problem < ActiveRecord::Base
   	associated_against: {users: :name, solutions: [:title, :answer]}
 	
 	def self.text_search(query)
-    # where('title @@ :q or description @@ :q', q: search)
+    # where('title @@ :q or description @@ :q', q: query)
     search(query)
   end
 	
