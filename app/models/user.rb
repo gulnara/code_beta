@@ -24,7 +24,14 @@ class User < ActiveRecord::Base
       :source => [
           { :reputation => :votes, :of => :problems, :aggregated_by => :sum },
           { :reputation => :votes, :of => :solutions, :aggregated_by => :sum }]
-
  
   # has_reputation :votes, source: {reputation: :votes, of: :solutions}, aggregated_by: :sum
+
+  include PgSearch
+  pg_search_scope :search, against: :name,
+    using: {tsearch: {dictionary: "english"}}
+  
+  def self.text_search(query)
+    search(query)
+  end
 end
