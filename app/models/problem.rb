@@ -13,5 +13,9 @@ class Problem < ActiveRecord::Base
 	validates :source_title, presence: true
 	acts_as_taggable
 	has_reputation :votes, source: :user , aggregated_by: :sum
+
+	def self.search(search)
+    find(:all, :conditions => ['title LIKE ?', "%#{search}%"])
+  end
 	
 end

@@ -1,3 +1,4 @@
+require 'will_paginate/array'
 class ProblemsController < ApplicationController
   helper_method :sort_column, :sort_direction
   before_action :set_problem, only: [:show, :edit, :update, :destroy]
@@ -6,7 +7,9 @@ class ProblemsController < ApplicationController
   before_action :who_are_you, only: [:edit, :update, :destroy]
 
   def index
-    if params[:tag]
+    if params[:search]
+      @problems = Problem.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
+    elsif params[:tag]
       @problems = Problem.tagged_with(params[:tag]).order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
     else
       @problems = Problem.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
