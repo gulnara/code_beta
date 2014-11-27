@@ -23,29 +23,15 @@
 	<% end %>
 	<%= link_to 'Back', problems_path, class: "btn btn-default" %>
 	<br>
-	<% if user_signed_in? %>
+	<h4>Solutions</h4>	 
+	<br> 
+		<% @problem.solutions.each do |solution| %>
+			<p>Title: <%= link_to "#{solution.title}" , problem_solution_path(@problem, solution)  %></p>
+			<p>Answer: <%= raw Pygments.highlight(solution.answer, lexer: solution.language) %></p>
+			<p>Language: <%=  solution.language %></p>
+			<p>Submited by: <%= link_to solution.user.name,  user_path(solution.user.id) %></p>
+		<% end %>
 	<br>
-	<h4>Solutions</h4>
-	  <table class="table">
-			<tr>
-			  <th>Title</th>
-			  <th>Language</th>
-			  <th>Sybmited by</th>
-			</tr>
-			<% @problem.solutions.each do |solution| %>
-			  <tr>
-			    <td ><%= link_to "#{solution.title}" , problem_solution_path(@problem, solution)  %></td>
-			   	<td ><%=  solution.language %></td>
-			    <td ><%= link_to solution.user.name,  user_path(solution.user.id) %></td>
-			  <% end %>
-			  </tr>
-			    <% else %>
-			    <div class = "generic">
-			    <h2>You need to be signed in to see solutions.</h2>
-			</div>
-			<% end %>
-		</table>
-	<%= render 'layouts/disqus' %>
 </div>
 
-			
+
