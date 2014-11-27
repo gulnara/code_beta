@@ -7,8 +7,8 @@ class ProblemsController < ApplicationController
   before_action :who_are_you, only: [:edit, :update, :destroy]
 
   def index
-    if params[:search]
-      @problems = Problem.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
+    if params[:query]
+      @problems = Problem.text_search(params[:query]).paginate(:page => params[:page], :per_page => 10)
     elsif params[:tag]
       @problems = Problem.tagged_with(params[:tag]).order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
     else

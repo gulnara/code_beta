@@ -3,9 +3,10 @@ class Problem < ActiveRecord::Base
 	tracked owner: ->(controller, model) { controller && controller.current_user }
 
 	has_many :solutions
+	belongs_to :users
 	has_many :users, through: :solutions
 
-	belongs_to :users
+	
 
 	has_many :sent_problems
 	validates :description, presence: true
@@ -14,8 +15,14 @@ class Problem < ActiveRecord::Base
 	acts_as_taggable
 	has_reputation :votes, source: :user , aggregated_by: :sum
 
-	def self.search(search)
-    where('title @@ :q or description @@ :q', q: search)
+	include PgSearch
+	pg_search_scope :search, against: [:title, :description],
+  	using: {tsearch: {dictionary: "english"}},
+  	associated_against: {users: :name, solutions: [:title, :answer]}
+	
+	def self.text_search(query)
+    # where('title @@ :q or description @@ :q', q: search)
+    search(query)
   end
 	
 end
