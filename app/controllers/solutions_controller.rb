@@ -12,7 +12,11 @@ class SolutionsController < ApplicationController
   end
 
   def solutions
-    @solutions = Solution.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+    if params[:query]
+      @solutions = Solution.text_search(params[:query]).paginate(:page => params[:page], :per_page => 10)
+    else
+      @solutions = Solution.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+    end
   end
 
   def show

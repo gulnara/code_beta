@@ -8,4 +8,13 @@ class Solution < ActiveRecord::Base
 
 	has_reputation :votes, source: :user, aggregated_by: :sum
 
+	include PgSearch
+	pg_search_scope :search, against: [:title, :answer],
+  	using: {tsearch: {dictionary: "english"}},
+  	associated_against: {user: :name}
+	
+	def self.text_search(query)
+    search(query)
+  end
+
 end
