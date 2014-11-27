@@ -20,6 +20,11 @@ class User < ActiveRecord::Base
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
   
-  has_reputation :votes, source: {reputation: :votes, of: :problems, of: :solutions}, aggregated_by: :sum
-  
+  has_reputation :votes,
+      :source => [
+          { :reputation => :votes, :of => :problems, :aggregated_by => :sum },
+          { :reputation => :votes, :of => :solutions, :aggregated_by => :sum }]
+
+ 
+  # has_reputation :votes, source: {reputation: :votes, of: :solutions}, aggregated_by: :sum
 end
