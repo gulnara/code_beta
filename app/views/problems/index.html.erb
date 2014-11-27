@@ -19,9 +19,10 @@
         <table class="table table-striped">
           <thead>
             <tr>
+              <th>Votes</th>
               <th ><%= sortable 'title' %></th>
               <th ><%= sortable 'solutions_number', 'Solutions' %></th>
-              <th >'Tags'</th>
+              <th >Tags</th>
               <th ><%= sortable 'source_title', 'Source' %></th>
               <th ><%= sortable 'created_at', 'Created' %></th>
               <th></th>
@@ -32,6 +33,7 @@
           <tbody>
           <% @problems.each do |problem| %>
             <tr>
+              <td ><%= problem.reputation_for(:votes).to_i%></td>
               <td ><%= link_to problem.title, problem %></td>
               <td  ><%= problem.solutions_number %></td>
               <td  ><%= raw problem.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></td>

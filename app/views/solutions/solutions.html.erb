@@ -13,6 +13,7 @@
         <table class="table table-striped">
           <thead>
             <tr>
+              <th>Votes</th>
               <th>Title</th>
               <th>Answer</th>
               <th>User</th>
@@ -24,6 +25,7 @@
           <tbody>
           <% @solutions.each do |solution| %>
             <tr>
+            <td ><%= solution.reputation_for(:votes).to_i%></td>
             <td><%= solution.title %></td>
             <td><%= solution.answer %></td>
             <td><%= solution.user.name if solution.user %></td>

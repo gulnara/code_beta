@@ -5,6 +5,7 @@
     <table>
       <thead>
         <tr>
+          <th>Votes</th>
           <th>Title</th>
           <th>Answer</th>
           <th>problem_id</th>
@@ -18,6 +19,7 @@
       <tbody>
         <% @solutions.each do |solution| %>
           <tr>
+            <td ><%= solution.reputation_for(:votes).to_i%></td>
             <td><%= solution.title %></td>
             <td><%= solution.answer %></td>
             <td><%= solution.problem_id %></td>
