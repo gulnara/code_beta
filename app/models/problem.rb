@@ -15,7 +15,7 @@ class Problem < ActiveRecord::Base
 	has_reputation :votes, source: :user , aggregated_by: :sum
 
 	def self.search(search)
-    find(:all, :conditions => ['title LIKE ?', "%#{search}%"])
+    where('title @@ :q or description @@ :q', q: search)
   end
 	
 end
