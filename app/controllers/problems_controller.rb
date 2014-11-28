@@ -12,7 +12,7 @@ class ProblemsController < ApplicationController
     elsif params[:tag]
       @problems = Problem.tagged_with(params[:tag]).order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
     else
-      @problems = Problem.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+      @problems = Problem.order(sort_column + " " + sort_direction).paginate(:page => params[:page], :per_page => 10)
     end
   end
 
@@ -32,7 +32,7 @@ class ProblemsController < ApplicationController
     elsif params[:tag]
       @problems = Problem.where("problems.solutions_number = 0").tagged_with(params[:tag]).order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
     else
-      @problems = Problem.where("problems.solutions_number = 0").order("created_at DESC").paginate(:page => params[:page], :per_page => 10) 
+      @problems = Problem.where("problems.solutions_number = 0").order(sort_column + " " + sort_direction).paginate(:page => params[:page], :per_page => 10) 
     end
   end
 

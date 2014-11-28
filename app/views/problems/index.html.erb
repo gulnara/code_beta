@@ -4,10 +4,8 @@
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
       <h1 class="page-header">All Problems</h1>
       <%= form_tag problems_path, :method => 'get' do %>
-        <div class="form-group">
-          <%= text_field_tag :query, params[:query] %>
-          <%= submit_tag "Search", :name => nil %>
-        </div>
+          <%= text_field_tag :query, params[:query], class: "form-inline" %>
+          <%= submit_tag "Search", :name => nil, class: "form-inline" %>
       <% end %>
       <div id="tag_cloud">
         <% tag_cloud Problem.tag_counts, %w(css1 css2 css3 css4) do |tag, css_class| %>
@@ -19,8 +17,8 @@
         <table class="table table-striped">
           <thead>
             <tr>
-              <th>Votes</th>
-              <th ><%= sortable 'title' %></th>
+              <th><%= sortable 'votes', 'Votes' %></th>
+              <th ><%= sortable 'title', 'Title' %></th>
               <th ><%= sortable 'solutions_number', 'Solutions' %></th>
               <th >Tags</th>
               <th ><%= sortable 'source_title', 'Source' %></th>
