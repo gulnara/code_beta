@@ -32,6 +32,9 @@
 			<p>Submited by: <%= link_to solution.user.name,  user_path(solution.user.id) %></p>
 		<% end %>
 	<br>
+
+	<%= render "comments/comments" %>
+	<%= render "comments/form" %>
 </div>
 
 

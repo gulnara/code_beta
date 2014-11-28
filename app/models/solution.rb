@@ -7,6 +7,7 @@ class Solution < ActiveRecord::Base
 	validates :answer, presence: true
 
 	has_reputation :votes, source: :user, aggregated_by: :sum
+	has_many :comments, as: :commentable
 
 	include PgSearch
 	pg_search_scope :search, against: [:title, :answer],

@@ -5,8 +5,10 @@ CodeBeta::Application.routes.draw do
   resources :activities
 
   resources :problems do
+    resources :comments
     resources :solutions do
       member { post :vote }
+      resources :comments
     end
     member { post :vote }
   end
