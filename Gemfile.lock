@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/jetthoughts/yaml_db.git
+  remote: https://github.com/jetthoughts/yaml_db.git
   revision: fb4b6bd7e12de3cffa93e0a298a1e5253d7e92ba
   ref: fb4b6bd7e12de3cffa93e0a298a1e5253d7e92ba
   specs:
@@ -169,7 +169,7 @@ GEM
       polyglot (>= 0.3.1)
     turbolinks (2.2.1)
       coffee-rails
-    tzinfo (0.3.38)
+    tzinfo (0.3.61)
     uglifier (2.4.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
